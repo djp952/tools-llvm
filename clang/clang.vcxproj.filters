@@ -1,0 +1,1093 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="External Libraries">
+      <UniqueIdentifier>{90121046-7d0c-4d30-a387-04738088cfd3}</UniqueIdentifier>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="External Libraries\libclang">
+      <UniqueIdentifier>{5d8f2953-ca9b-4ba1-8f41-05716e4dbc4e}</UniqueIdentifier>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Header Files\compilationdatabase">
+      <UniqueIdentifier>{a8c43e38-a074-48cf-93e5-d90e5e5304ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\compilationdatabase">
+      <UniqueIdentifier>{2a2c46d6-ef20-4893-9977-f6934e96b7b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\extensions">
+      <UniqueIdentifier>{79896283-ae68-4cb0-bd5d-b06e8c1a08e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\extensions">
+      <UniqueIdentifier>{1b4d999b-400b-424e-9b5b-4881676222b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\diagnostics">
+      <UniqueIdentifier>{6ed7e181-cc14-47ec-8107-69676f9a0c9f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\diagnostics">
+      <UniqueIdentifier>{ff7223ca-371f-4ee7-8686-148fed9b991a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\remappings">
+      <UniqueIdentifier>{0729973b-9e5d-4966-8a8c-a622d7b977cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\remappings">
+      <UniqueIdentifier>{09f12d4e-65a3-4666-bf90-d601eefdb322}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\utility">
+      <UniqueIdentifier>{686eb0ca-b94b-43d5-aaee-257f1ea67671}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\utility">
+      <UniqueIdentifier>{790b2230-0b21-491b-bcb9-203b12d86d5a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="External Libraries\libclang\include">
+      <UniqueIdentifier>{dcdbe8d5-e58a-41ea-b579-5b6bc9341b1f}</UniqueIdentifier>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="External Libraries\libclang\bin">
+      <UniqueIdentifier>{e4bdb681-0c21-4995-b336-70b1e24662ce}</UniqueIdentifier>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="External Libraries\libclang\bin\x64">
+      <UniqueIdentifier>{f827d2e5-a9e6-4a4e-a246-81abeec15bf3}</UniqueIdentifier>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="External Libraries\libclang\bin\Win32">
+      <UniqueIdentifier>{5cb55228-1868-4bde-a789-2cd3c9a168ba}</UniqueIdentifier>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Header Files\buildsystem">
+      <UniqueIdentifier>{97bc9474-6434-4fcd-a925-90417f2a280a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\buildsystem">
+      <UniqueIdentifier>{a0a3744c-28b2-4fb2-9c3a-3e32f3916ba2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\documentation">
+      <UniqueIdentifier>{b8bee9f6-a7cc-4707-b58a-843847100747}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\documentation">
+      <UniqueIdentifier>{22036c85-7289-4a89-aa36-b49ba8aeafdf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\codecompletion">
+      <UniqueIdentifier>{9cc060bf-bd41-485f-a5ba-0f4ef5ff0c12}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\codecompletion">
+      <UniqueIdentifier>{96fbc131-e8e5-4109-a422-68950c912ce3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\indexer">
+      <UniqueIdentifier>{26985592-cdbf-42da-8291-32c860dc0027}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\indexer">
+      <UniqueIdentifier>{f1324b5b-4331-442f-8afd-aed95ed3ce7e}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external-libclang\include\clang-c\BuildSystem.h">
+      <Filter>External Libraries\libclang\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external-libclang\include\clang-c\CXCompilationDatabase.h">
+      <Filter>External Libraries\libclang\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external-libclang\include\clang-c\CXErrorCode.h">
+      <Filter>External Libraries\libclang\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external-libclang\include\clang-c\CXString.h">
+      <Filter>External Libraries\libclang\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external-libclang\include\clang-c\Documentation.h">
+      <Filter>External Libraries\libclang\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external-libclang\include\clang-c\Index.h">
+      <Filter>External Libraries\libclang\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external-libclang\include\clang-c\Platform.h">
+      <Filter>External Libraries\libclang\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Clang.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Index.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TranslationUnit.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IndexGlobalOptions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TranslationUnitParseOptions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TranslationUnitSaveOptions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TranslationUnitSaveErrorCode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TranslationUnitSaveException.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ClangErrorCode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="File.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FileUniqueIdentifier.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Cursor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Token.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TokenKind.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Location.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Extent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LocationKind.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TokenCollection.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceUsageDictionary.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceUsageKind.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Type.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TypeKind.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CursorKind.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CompilationDatabase.h">
+      <Filter>Header Files\compilationdatabase</Filter>
+    </ClInclude>
+    <ClInclude Include="CompilationDatabaseLoadErrorCode.h">
+      <Filter>Header Files\compilationdatabase</Filter>
+    </ClInclude>
+    <ClInclude Include="CompilationDatabaseLoadException.h">
+      <Filter>Header Files\compilationdatabase</Filter>
+    </ClInclude>
+    <ClInclude Include="CompileCommand.h">
+      <Filter>Header Files\compilationdatabase</Filter>
+    </ClInclude>
+    <ClInclude Include="CompileCommandArgumentCollection.h">
+      <Filter>Header Files\compilationdatabase</Filter>
+    </ClInclude>
+    <ClInclude Include="CompileCommandCollection.h">
+      <Filter>Header Files\compilationdatabase</Filter>
+    </ClInclude>
+    <ClInclude Include="CompileCommandSourceMapping.h">
+      <Filter>Header Files\compilationdatabase</Filter>
+    </ClInclude>
+    <ClInclude Include="CompileCommandSourceMappingCollection.h">
+      <Filter>Header Files\compilationdatabase</Filter>
+    </ClInclude>
+    <ClInclude Include="ExtentCollection.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Module.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TopLevelHeaderCollection.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CursorComment.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PlatformAvailability.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PlatformAvailabilityCollection.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CursorCollection.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UnifiedSymbolResolution.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ReferenceNameExtent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectiveCPropertyAttribute.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectiveCDeclarationQualifier.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CxxAccessSpecifier.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CxxReferenceQualifier.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StorageClass.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Language.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Linkage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CallingConvention.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OverriddenCursorCollection.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TypeCollection.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Diagnostic.h">
+      <Filter>Header Files\diagnostics</Filter>
+    </ClInclude>
+    <ClInclude Include="DiagnosticCategory.h">
+      <Filter>Header Files\diagnostics</Filter>
+    </ClInclude>
+    <ClInclude Include="DiagnosticDisplayOptions.h">
+      <Filter>Header Files\diagnostics</Filter>
+    </ClInclude>
+    <ClInclude Include="DiagnosticFixIt.h">
+      <Filter>Header Files\diagnostics</Filter>
+    </ClInclude>
+    <ClInclude Include="DiagnosticFixItCollection.h">
+      <Filter>Header Files\diagnostics</Filter>
+    </ClInclude>
+    <ClInclude Include="DiagnosticLoadErrorCode.h">
+      <Filter>Header Files\diagnostics</Filter>
+    </ClInclude>
+    <ClInclude Include="DiagnosticLoadException.h">
+      <Filter>Header Files\diagnostics</Filter>
+    </ClInclude>
+    <ClInclude Include="DiagnosticSeverity.h">
+      <Filter>Header Files\diagnostics</Filter>
+    </ClInclude>
+    <ClInclude Include="Remapping.h">
+      <Filter>Header Files\remappings</Filter>
+    </ClInclude>
+    <ClInclude Include="RemappingCollection.h">
+      <Filter>Header Files\remappings</Filter>
+    </ClInclude>
+    <ClInclude Include="TemplateArgumentTypeCollection.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ArgumentTypeCollection.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OverloadedDeclarationCursorCollection.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ArgumentCursorCollection.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TemplateArgumentKind.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TemplateArgument.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TemplateArgumentCollection.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AutoGCHandle.h">
+      <Filter>Header Files\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="StringUtil.h">
+      <Filter>Header Files\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="stdmove.h">
+      <Filter>Header Files\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="GCHandleRef.h">
+      <Filter>Header Files\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="EnumerateChildrenFunc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EnumerateChildrenResult.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EnumerateIncludedFileFunc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EnumerateFieldsResult.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EnumerateFieldsFunc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EnumerateIncludeDirectivesFunc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EnumerateIncludeDirectivesResult.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EnumerateReferencesFunc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EnumerateReferencesResult.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CursorExtensions.h">
+      <Filter>Header Files\extensions</Filter>
+    </ClInclude>
+    <ClInclude Include="FileExtensions.h">
+      <Filter>Header Files\extensions</Filter>
+    </ClInclude>
+    <ClInclude Include="TranslationUnitExtensions.h">
+      <Filter>Header Files\extensions</Filter>
+    </ClInclude>
+    <ClInclude Include="TypeExtensions.h">
+      <Filter>Header Files\extensions</Filter>
+    </ClInclude>
+    <ClInclude Include="LocationCollection.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EnumConstant.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DiagnosticEmphasisCollection.h">
+      <Filter>Header Files\diagnostics</Filter>
+    </ClInclude>
+    <ClInclude Include="TypeFieldOffsets.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CursorVisibility.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ExtentExtensions.h">
+      <Filter>Header Files\extensions</Filter>
+    </ClInclude>
+    <ClInclude Include="VirtualFileOverlay.h">
+      <Filter>Header Files\buildsystem</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleMapDescriptor.h">
+      <Filter>Header Files\buildsystem</Filter>
+    </ClInclude>
+    <ClInclude Include="ClangException.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleMapDescriptorExtensions.h">
+      <Filter>Header Files\extensions</Filter>
+    </ClInclude>
+    <ClInclude Include="VirtualFileOverlayExtensions.h">
+      <Filter>Header Files\extensions</Filter>
+    </ClInclude>
+    <ClInclude Include="UnsavedFile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CommentKind.h">
+      <Filter>Header Files\documentation</Filter>
+    </ClInclude>
+    <ClInclude Include="InlineCommandRenderKind.h">
+      <Filter>Header Files\documentation</Filter>
+    </ClInclude>
+    <ClInclude Include="Comment.h">
+      <Filter>Header Files\documentation</Filter>
+    </ClInclude>
+    <ClInclude Include="CommentCollection.h">
+      <Filter>Header Files\documentation</Filter>
+    </ClInclude>
+    <ClInclude Include="TextComment.h">
+      <Filter>Header Files\documentation</Filter>
+    </ClInclude>
+    <ClInclude Include="InlineCommandComment.h">
+      <Filter>Header Files\documentation</Filter>
+    </ClInclude>
+    <ClInclude Include="BlockCommandComment.h">
+      <Filter>Header Files\documentation</Filter>
+    </ClInclude>
+    <ClInclude Include="ParamCommandComment.h">
+      <Filter>Header Files\documentation</Filter>
+    </ClInclude>
+    <ClInclude Include="VerbatimBlockCommandComment.h">
+      <Filter>Header Files\documentation</Filter>
+    </ClInclude>
+    <ClInclude Include="VerbatimBlockLineComment.h">
+      <Filter>Header Files\documentation</Filter>
+    </ClInclude>
+    <ClInclude Include="VerbatimLineComment.h">
+      <Filter>Header Files\documentation</Filter>
+    </ClInclude>
+    <ClInclude Include="ParagraphComment.h">
+      <Filter>Header Files\documentation</Filter>
+    </ClInclude>
+    <ClInclude Include="HtmlStartTagComment.h">
+      <Filter>Header Files\documentation</Filter>
+    </ClInclude>
+    <ClInclude Include="HtmlEndTagComment.h">
+      <Filter>Header Files\documentation</Filter>
+    </ClInclude>
+    <ClInclude Include="InlineContentComment.h">
+      <Filter>Header Files\documentation</Filter>
+    </ClInclude>
+    <ClInclude Include="HtmlTagComment.h">
+      <Filter>Header Files\documentation</Filter>
+    </ClInclude>
+    <ClInclude Include="BlockContentComment.h">
+      <Filter>Header Files\documentation</Filter>
+    </ClInclude>
+    <ClInclude Include="ParameterDirection.h">
+      <Filter>Header Files\documentation</Filter>
+    </ClInclude>
+    <ClInclude Include="TParamCommandComment.h">
+      <Filter>Header Files\documentation</Filter>
+    </ClInclude>
+    <ClInclude Include="StringDictionary.h">
+      <Filter>Header Files\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="StringCollection.h">
+      <Filter>Header Files\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="TParamCommandIndex.h">
+      <Filter>Header Files\documentation</Filter>
+    </ClInclude>
+    <ClInclude Include="ParsedComment.h">
+      <Filter>Header Files\documentation</Filter>
+    </ClInclude>
+    <ClInclude Include="CompletionContext.h">
+      <Filter>Header Files\codecompletion</Filter>
+    </ClInclude>
+    <ClInclude Include="CompletionOptions.h">
+      <Filter>Header Files\codecompletion</Filter>
+    </ClInclude>
+    <ClInclude Include="Availability.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CompletionChunkKind.h">
+      <Filter>Header Files\codecompletion</Filter>
+    </ClInclude>
+    <ClInclude Include="CompletionChunkCollection.h">
+      <Filter>Header Files\codecompletion</Filter>
+    </ClInclude>
+    <ClInclude Include="CompletionChunk.h">
+      <Filter>Header Files\codecompletion</Filter>
+    </ClInclude>
+    <ClInclude Include="ReadOnlyListEnumerator.h">
+      <Filter>Header Files\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="CompletionString.h">
+      <Filter>Header Files\codecompletion</Filter>
+    </ClInclude>
+    <ClInclude Include="CompletionResultCollection.h">
+      <Filter>Header Files\codecompletion</Filter>
+    </ClInclude>
+    <ClInclude Include="CompletionResult.h">
+      <Filter>Header Files\codecompletion</Filter>
+    </ClInclude>
+    <ClInclude Include="NullComment.h">
+      <Filter>Header Files\documentation</Filter>
+    </ClInclude>
+    <ClInclude Include="DiagnosticCollection.h">
+      <Filter>Header Files\diagnostics</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadedDiagnosticCollection.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TranslationUnitDiagnosticCollection.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DiagnosticChildCollection.h">
+      <Filter>Header Files\diagnostics</Filter>
+    </ClInclude>
+    <ClInclude Include="CompletionResultDiagnosticCollection.h">
+      <Filter>Header Files\codecompletion</Filter>
+    </ClInclude>
+    <ClInclude Include="IndexDeclaration.h">
+      <Filter>Header Files\indexer</Filter>
+    </ClInclude>
+    <ClInclude Include="IndexDiagnosticCollection.h">
+      <Filter>Header Files\indexer</Filter>
+    </ClInclude>
+    <ClInclude Include="IndexEntity.h">
+      <Filter>Header Files\indexer</Filter>
+    </ClInclude>
+    <ClInclude Include="IndexEntityLanguage.h">
+      <Filter>Header Files\indexer</Filter>
+    </ClInclude>
+    <ClInclude Include="IndexEntityReference.h">
+      <Filter>Header Files\indexer</Filter>
+    </ClInclude>
+    <ClInclude Include="IndexEntityReferenceKind.h">
+      <Filter>Header Files\indexer</Filter>
+    </ClInclude>
+    <ClInclude Include="IndexImportedASTFile.h">
+      <Filter>Header Files\indexer</Filter>
+    </ClInclude>
+    <ClInclude Include="IndexIncludedFile.h">
+      <Filter>Header Files\indexer</Filter>
+    </ClInclude>
+    <ClInclude Include="IndexEntityKind.h">
+      <Filter>Header Files\indexer</Filter>
+    </ClInclude>
+    <ClInclude Include="IndexEntityCxxTemplateKind.h">
+      <Filter>Header Files\indexer</Filter>
+    </ClInclude>
+    <ClInclude Include="IndexAttributeKind.h">
+      <Filter>Header Files\indexer</Filter>
+    </ClInclude>
+    <ClInclude Include="IndexObjectiveCContainerKind.h">
+      <Filter>Header Files\indexer</Filter>
+    </ClInclude>
+    <ClInclude Include="IndexContainer.h">
+      <Filter>Header Files\indexer</Filter>
+    </ClInclude>
+    <ClInclude Include="IndexAttributeCollection.h">
+      <Filter>Header Files\indexer</Filter>
+    </ClInclude>
+    <ClInclude Include="IndexDeclarationFlags.h">
+      <Filter>Header Files\indexer</Filter>
+    </ClInclude>
+    <ClInclude Include="IndexAttribute.h">
+      <Filter>Header Files\indexer</Filter>
+    </ClInclude>
+    <ClInclude Include="IndexAction.h">
+      <Filter>Header Files\indexer</Filter>
+    </ClInclude>
+    <ClInclude Include="IndexEventArgs.h">
+      <Filter>Header Files\indexer</Filter>
+    </ClInclude>
+    <ClInclude Include="UnmanagedTypeSafeHandle.h">
+      <Filter>Header Files\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="TranslationUnitHandle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TranslationUnitReferenceHandle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ReferenceHandle.h">
+      <Filter>Header Files\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="IndexOptions.h">
+      <Filter>Header Files\indexer</Filter>
+    </ClInclude>
+    <ClInclude Include="IndexDeclarationKind.h">
+      <Filter>Header Files\indexer</Filter>
+    </ClInclude>
+    <ClInclude Include="IndexCxxClassDeclaration.h">
+      <Filter>Header Files\indexer</Filter>
+    </ClInclude>
+    <ClInclude Include="IndexObjectiveCContainerDeclaration.h">
+      <Filter>Header Files\indexer</Filter>
+    </ClInclude>
+    <ClInclude Include="IndexObjectiveCPropertyDeclaration.h">
+      <Filter>Header Files\indexer</Filter>
+    </ClInclude>
+    <ClInclude Include="IndexObjectiveCInterfaceDeclaration.h">
+      <Filter>Header Files\indexer</Filter>
+    </ClInclude>
+    <ClInclude Include="IndexObjectiveCCategoryDeclaration.h">
+      <Filter>Header Files\indexer</Filter>
+    </ClInclude>
+    <ClInclude Include="IndexObjectiveCProtocolDeclaration.h">
+      <Filter>Header Files\indexer</Filter>
+    </ClInclude>
+    <ClInclude Include="IndexBaseClassCollection.h">
+      <Filter>Header Files\indexer</Filter>
+    </ClInclude>
+    <ClInclude Include="IndexBaseClass.h">
+      <Filter>Header Files\indexer</Filter>
+    </ClInclude>
+    <ClInclude Include="IndexIBOutletCollectionAttribute.h">
+      <Filter>Header Files\indexer</Filter>
+    </ClInclude>
+    <ClInclude Include="IndexActionPointerHandle.h">
+      <Filter>Header Files\indexer</Filter>
+    </ClInclude>
+    <ClInclude Include="IndexAbortEventArgs.h">
+      <Filter>Header Files\indexer</Filter>
+    </ClInclude>
+    <ClInclude Include="IndexDeclarationEventArgs.h">
+      <Filter>Header Files\indexer</Filter>
+    </ClInclude>
+    <ClInclude Include="IndexEnteredMainFileEventArgs.h">
+      <Filter>Header Files\indexer</Filter>
+    </ClInclude>
+    <ClInclude Include="IndexEntityReferenceEventArgs.h">
+      <Filter>Header Files\indexer</Filter>
+    </ClInclude>
+    <ClInclude Include="IndexImportedASTFileEventArgs.h">
+      <Filter>Header Files\indexer</Filter>
+    </ClInclude>
+    <ClInclude Include="IndexIncludedFileEventArgs.h">
+      <Filter>Header Files\indexer</Filter>
+    </ClInclude>
+    <ClInclude Include="IndexDiagnosticsEventArgs.h">
+      <Filter>Header Files\indexer</Filter>
+    </ClInclude>
+    <ClInclude Include="IndexObjectiveCProtocolReference.h">
+      <Filter>Header Files\indexer</Filter>
+    </ClInclude>
+    <ClInclude Include="IndexObjectiveCProtocolReferenceCollection.h">
+      <Filter>Header Files\indexer</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AssemblyInfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="tmp\version.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Clang.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Index.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TranslationUnit.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TranslationUnitSaveErrorCode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TranslationUnitSaveException.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ClangErrorCode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="File.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FileUniqueIdentifier.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Cursor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Token.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Location.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Extent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TokenCollection.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourceUsageDictionary.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourceUsageKind.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Type.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TypeKind.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CursorKind.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CompilationDatabase.cpp">
+      <Filter>Source Files\compilationdatabase</Filter>
+    </ClCompile>
+    <ClCompile Include="CompilationDatabaseLoadErrorCode.cpp">
+      <Filter>Source Files\compilationdatabase</Filter>
+    </ClCompile>
+    <ClCompile Include="CompilationDatabaseLoadException.cpp">
+      <Filter>Source Files\compilationdatabase</Filter>
+    </ClCompile>
+    <ClCompile Include="CompileCommand.cpp">
+      <Filter>Source Files\compilationdatabase</Filter>
+    </ClCompile>
+    <ClCompile Include="CompileCommandArgumentCollection.cpp">
+      <Filter>Source Files\compilationdatabase</Filter>
+    </ClCompile>
+    <ClCompile Include="CompileCommandCollection.cpp">
+      <Filter>Source Files\compilationdatabase</Filter>
+    </ClCompile>
+    <ClCompile Include="CompileCommandSourceMapping.cpp">
+      <Filter>Source Files\compilationdatabase</Filter>
+    </ClCompile>
+    <ClCompile Include="CompileCommandSourceMappingCollection.cpp">
+      <Filter>Source Files\compilationdatabase</Filter>
+    </ClCompile>
+    <ClCompile Include="ExtentCollection.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Module.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TopLevelHeaderCollection.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CursorComment.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PlatformAvailability.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PlatformAvailabilityCollection.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CursorCollection.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UnifiedSymbolResolution.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OverriddenCursorCollection.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TypeCollection.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Diagnostic.cpp">
+      <Filter>Source Files\diagnostics</Filter>
+    </ClCompile>
+    <ClCompile Include="DiagnosticCategory.cpp">
+      <Filter>Source Files\diagnostics</Filter>
+    </ClCompile>
+    <ClCompile Include="DiagnosticFixIt.cpp">
+      <Filter>Source Files\diagnostics</Filter>
+    </ClCompile>
+    <ClCompile Include="DiagnosticFixItCollection.cpp">
+      <Filter>Source Files\diagnostics</Filter>
+    </ClCompile>
+    <ClCompile Include="DiagnosticLoadException.cpp">
+      <Filter>Source Files\diagnostics</Filter>
+    </ClCompile>
+    <ClCompile Include="Remapping.cpp">
+      <Filter>Source Files\remappings</Filter>
+    </ClCompile>
+    <ClCompile Include="RemappingCollection.cpp">
+      <Filter>Source Files\remappings</Filter>
+    </ClCompile>
+    <ClCompile Include="TemplateArgumentTypeCollection.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ArgumentTypeCollection.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OverloadedDeclarationCursorCollection.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ArgumentCursorCollection.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TemplateArgument.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TemplateArgumentCollection.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="StringUtil.cpp">
+      <Filter>Source Files\utility</Filter>
+    </ClCompile>
+    <ClCompile Include="AutoGCHandle.cpp">
+      <Filter>Source Files\utility</Filter>
+    </ClCompile>
+    <ClCompile Include="EnumerateChildrenFunc.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EnumerateChildrenResult.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EnumerateIncludedFileFunc.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EnumerateFieldsResult.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EnumerateFieldsFunc.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EnumerateIncludeDirectivesResult.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EnumerateIncludeDirectivesFunc.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EnumerateReferencesFunc.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EnumerateReferencesResult.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CursorExtensions.cpp">
+      <Filter>Source Files\extensions</Filter>
+    </ClCompile>
+    <ClCompile Include="FileExtensions.cpp">
+      <Filter>Source Files\extensions</Filter>
+    </ClCompile>
+    <ClCompile Include="TranslationUnitExtensions.cpp">
+      <Filter>Source Files\extensions</Filter>
+    </ClCompile>
+    <ClCompile Include="TypeExtensions.cpp">
+      <Filter>Source Files\extensions</Filter>
+    </ClCompile>
+    <ClCompile Include="LocationCollection.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EnumConstant.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DiagnosticEmphasisCollection.cpp">
+      <Filter>Source Files\diagnostics</Filter>
+    </ClCompile>
+    <ClCompile Include="TypeFieldOffsets.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ExtentExtensions.cpp">
+      <Filter>Source Files\extensions</Filter>
+    </ClCompile>
+    <ClCompile Include="VirtualFileOverlay.cpp">
+      <Filter>Source Files\buildsystem</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleMapDescriptor.cpp">
+      <Filter>Source Files\buildsystem</Filter>
+    </ClCompile>
+    <ClCompile Include="ClangException.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleMapDescriptorExtensions.cpp">
+      <Filter>Source Files\extensions</Filter>
+    </ClCompile>
+    <ClCompile Include="VirtualFileOverlayExtensions.cpp">
+      <Filter>Source Files\extensions</Filter>
+    </ClCompile>
+    <ClCompile Include="UnsavedFile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Comment.cpp">
+      <Filter>Source Files\documentation</Filter>
+    </ClCompile>
+    <ClCompile Include="CommentCollection.cpp">
+      <Filter>Source Files\documentation</Filter>
+    </ClCompile>
+    <ClCompile Include="TextComment.cpp">
+      <Filter>Source Files\documentation</Filter>
+    </ClCompile>
+    <ClCompile Include="BlockCommandComment.cpp">
+      <Filter>Source Files\documentation</Filter>
+    </ClCompile>
+    <ClCompile Include="HtmlEndTagComment.cpp">
+      <Filter>Source Files\documentation</Filter>
+    </ClCompile>
+    <ClCompile Include="HtmlStartTagComment.cpp">
+      <Filter>Source Files\documentation</Filter>
+    </ClCompile>
+    <ClCompile Include="ParagraphComment.cpp">
+      <Filter>Source Files\documentation</Filter>
+    </ClCompile>
+    <ClCompile Include="ParamCommandComment.cpp">
+      <Filter>Source Files\documentation</Filter>
+    </ClCompile>
+    <ClCompile Include="VerbatimBlockCommandComment.cpp">
+      <Filter>Source Files\documentation</Filter>
+    </ClCompile>
+    <ClCompile Include="VerbatimBlockLineComment.cpp">
+      <Filter>Source Files\documentation</Filter>
+    </ClCompile>
+    <ClCompile Include="VerbatimLineComment.cpp">
+      <Filter>Source Files\documentation</Filter>
+    </ClCompile>
+    <ClCompile Include="InlineCommandComment.cpp">
+      <Filter>Source Files\documentation</Filter>
+    </ClCompile>
+    <ClCompile Include="HtmlTagComment.cpp">
+      <Filter>Source Files\documentation</Filter>
+    </ClCompile>
+    <ClCompile Include="InlineContentComment.cpp">
+      <Filter>Source Files\documentation</Filter>
+    </ClCompile>
+    <ClCompile Include="BlockContentComment.cpp">
+      <Filter>Source Files\documentation</Filter>
+    </ClCompile>
+    <ClCompile Include="TParamCommandComment.cpp">
+      <Filter>Source Files\documentation</Filter>
+    </ClCompile>
+    <ClCompile Include="StringCollection.cpp">
+      <Filter>Source Files\utility</Filter>
+    </ClCompile>
+    <ClCompile Include="StringDictionary.cpp">
+      <Filter>Source Files\utility</Filter>
+    </ClCompile>
+    <ClCompile Include="TParamCommandIndex.cpp">
+      <Filter>Source Files\documentation</Filter>
+    </ClCompile>
+    <ClCompile Include="ParsedComment.cpp">
+      <Filter>Source Files\documentation</Filter>
+    </ClCompile>
+    <ClCompile Include="CompletionChunk.cpp">
+      <Filter>Source Files\codecompletion</Filter>
+    </ClCompile>
+    <ClCompile Include="CompletionChunkCollection.cpp">
+      <Filter>Source Files\codecompletion</Filter>
+    </ClCompile>
+    <ClCompile Include="ReadOnlyListEnumerator.cpp">
+      <Filter>Source Files\utility</Filter>
+    </ClCompile>
+    <ClCompile Include="CompletionString.cpp">
+      <Filter>Source Files\codecompletion</Filter>
+    </ClCompile>
+    <ClCompile Include="CompletionResultCollection.cpp">
+      <Filter>Source Files\codecompletion</Filter>
+    </ClCompile>
+    <ClCompile Include="CompletionResult.cpp">
+      <Filter>Source Files\codecompletion</Filter>
+    </ClCompile>
+    <ClCompile Include="NullComment.cpp">
+      <Filter>Source Files\documentation</Filter>
+    </ClCompile>
+    <ClCompile Include="DiagnosticCollection.cpp">
+      <Filter>Source Files\diagnostics</Filter>
+    </ClCompile>
+    <ClCompile Include="DiagnosticChildCollection.cpp">
+      <Filter>Source Files\diagnostics</Filter>
+    </ClCompile>
+    <ClCompile Include="TranslationUnitDiagnosticCollection.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadedDiagnosticCollection.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CompletionResultDiagnosticCollection.cpp">
+      <Filter>Source Files\codecompletion</Filter>
+    </ClCompile>
+    <ClCompile Include="IndexDeclaration.cpp">
+      <Filter>Source Files\indexer</Filter>
+    </ClCompile>
+    <ClCompile Include="IndexDiagnosticCollection.cpp">
+      <Filter>Source Files\indexer</Filter>
+    </ClCompile>
+    <ClCompile Include="IndexEntity.cpp">
+      <Filter>Source Files\indexer</Filter>
+    </ClCompile>
+    <ClCompile Include="IndexEntityReference.cpp">
+      <Filter>Source Files\indexer</Filter>
+    </ClCompile>
+    <ClCompile Include="IndexImportedASTFile.cpp">
+      <Filter>Source Files\indexer</Filter>
+    </ClCompile>
+    <ClCompile Include="IndexIncludedFile.cpp">
+      <Filter>Source Files\indexer</Filter>
+    </ClCompile>
+    <ClCompile Include="IndexContainer.cpp">
+      <Filter>Source Files\indexer</Filter>
+    </ClCompile>
+    <ClCompile Include="IndexAttribute.cpp">
+      <Filter>Source Files\indexer</Filter>
+    </ClCompile>
+    <ClCompile Include="IndexAction.cpp">
+      <Filter>Source Files\indexer</Filter>
+    </ClCompile>
+    <ClCompile Include="IndexAttributeCollection.cpp">
+      <Filter>Source Files\indexer</Filter>
+    </ClCompile>
+    <ClCompile Include="IndexCxxClassDeclaration.cpp">
+      <Filter>Source Files\indexer</Filter>
+    </ClCompile>
+    <ClCompile Include="IndexObjectiveCPropertyDeclaration.cpp">
+      <Filter>Source Files\indexer</Filter>
+    </ClCompile>
+    <ClCompile Include="IndexObjectiveCContainerDeclaration.cpp">
+      <Filter>Source Files\indexer</Filter>
+    </ClCompile>
+    <ClCompile Include="IndexObjectiveCCategoryDeclaration.cpp">
+      <Filter>Source Files\indexer</Filter>
+    </ClCompile>
+    <ClCompile Include="IndexObjectiveCInterfaceDeclaration.cpp">
+      <Filter>Source Files\indexer</Filter>
+    </ClCompile>
+    <ClCompile Include="IndexObjectiveCProtocolDeclaration.cpp">
+      <Filter>Source Files\indexer</Filter>
+    </ClCompile>
+    <ClCompile Include="IndexBaseClass.cpp">
+      <Filter>Source Files\indexer</Filter>
+    </ClCompile>
+    <ClCompile Include="IndexBaseClassCollection.cpp">
+      <Filter>Source Files\indexer</Filter>
+    </ClCompile>
+    <ClCompile Include="IndexIBOutletCollectionAttribute.cpp">
+      <Filter>Source Files\indexer</Filter>
+    </ClCompile>
+    <ClCompile Include="IndexEntityKind.cpp">
+      <Filter>Source Files\indexer</Filter>
+    </ClCompile>
+    <ClCompile Include="IndexEventArgs.cpp">
+      <Filter>Source Files\indexer</Filter>
+    </ClCompile>
+    <ClCompile Include="IndexIncludedFileEventArgs.cpp">
+      <Filter>Source Files\indexer</Filter>
+    </ClCompile>
+    <ClCompile Include="IndexImportedASTFileEventArgs.cpp">
+      <Filter>Source Files\indexer</Filter>
+    </ClCompile>
+    <ClCompile Include="IndexEntityReferenceEventArgs.cpp">
+      <Filter>Source Files\indexer</Filter>
+    </ClCompile>
+    <ClCompile Include="IndexAbortEventArgs.cpp">
+      <Filter>Source Files\indexer</Filter>
+    </ClCompile>
+    <ClCompile Include="IndexDeclarationEventArgs.cpp">
+      <Filter>Source Files\indexer</Filter>
+    </ClCompile>
+    <ClCompile Include="IndexDiagnosticsEventArgs.cpp">
+      <Filter>Source Files\indexer</Filter>
+    </ClCompile>
+    <ClCompile Include="IndexEnteredMainFileEventArgs.cpp">
+      <Filter>Source Files\indexer</Filter>
+    </ClCompile>
+    <ClCompile Include="IndexObjectiveCProtocolReference.cpp">
+      <Filter>Source Files\indexer</Filter>
+    </ClCompile>
+    <ClCompile Include="IndexObjectiveCProtocolReferenceCollection.cpp">
+      <Filter>Source Files\indexer</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="tmp\version.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="version.ini" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="..\..\external-libclang\bin\Win32\libclang.lib">
+      <Filter>External Libraries\libclang\bin\Win32</Filter>
+    </Library>
+    <Library Include="..\..\external-libclang\bin\x64\libclang.lib">
+      <Filter>External Libraries\libclang\bin\x64</Filter>
+    </Library>
+  </ItemGroup>
+</Project>

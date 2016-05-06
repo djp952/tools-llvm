@@ -1,0 +1,45 @@
+//---------------------------------------------------------------------------
+// This is the expected set of diagnostics from the diagnostics.cpp file
+// as well as the serialized diagnostics.bin.  (Output from clang v3.8.0)
+//
+// Command Line: clang++ -o diagnostics.o -c diagnostics.cpp
+//---------------------------------------------------------------------------
+
+diagnostics.cpp:1:11: warning: control reaches end of non-void function
+      [-Wreturn-type]
+int f0() {}
+          ^
+diagnostics.cpp:2:6: error: functions that differ only in their return type
+      cannot be overloaded
+char f0() {}
+~~~~ ^
+diagnostics.cpp:1:5: note: previous definition is here
+int f0() {}
+~~~ ^
+diagnostics.cpp:4:7: error: cannot initialize a variable of type 'void *' with
+      an rvalue of type 'int'
+void* A = 1;
+      ^   ~
+diagnostics.cpp:3:11: note: expanded from macro 'A'
+#define A x
+          ^
+diagnostics.cpp:6:1: error: redefinition of 'x'
+x = { f0 : 1 };
+^
+diagnostics.cpp:4:7: note: previous definition is here
+void* A = 1;
+      ^
+diagnostics.cpp:3:11: note: expanded from macro 'A'
+#define A x
+          ^
+diagnostics.cpp:6:7: warning: use of GNU old-style field designator extension
+      [-Wgnu-designator]
+x = { f0 : 1 };
+      ^~~~
+      .f0 = 
+diagnostics.cpp:7:16: error: cannot initialize a variable of type 'int' with an
+      rvalue of type 'const char *'
+void f() { int i = "a" + 1; }
+               ^   ~~~~~~~
+2 warnings and 4 errors generated.
+

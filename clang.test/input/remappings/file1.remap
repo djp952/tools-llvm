@@ -1,0 +1,31 @@
+[
+ {
+  "file": "./input/remappings/header1.h",
+  "offset": 114,
+  "remove": 2,
+  "text": "instancetype",
+ },
+ {
+  "file": "./input/remappings/header1.h",
+  "offset": 148,
+  "remove": 10,
+  "text": "@property (nonatomic) int prop",
+ },
+ {
+  "file": "./input/remappings/header1.h",
+  "offset": 159,
+  "remove": 23,
+ },
+ {
+  "file": "./input/remappings/header1.h",
+  "offset": 185,
+  "remove": 2,
+  "text": "instancetype",
+ },
+ {
+  "file": "./input/remappings/header1.h",
+  "offset": 194,
+  "remove": 2,
+  "text": "instancetype",
+ },
+]

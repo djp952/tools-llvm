@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RunSettings>
+
+  <!--
+  Use .NET Framework 4.5
+  -->
+  <RunConfiguration>
+    <TargetFrameworkVersion>Framework45</TargetFrameworkVersion>
+  </RunConfiguration>
+
+  <!-- 
+  Set DeploymentEnabled to False to run the test from the output directory, 
+  as the required libclang.dll will be deployed there and there isn't any 
+  good way to get it into a deployment folder, the test will fail before an
+  AssemblyInitialize function can be called to do the work.  (The test files
+  will still be deployed due to the DeploymentItem() attributes)
+  -->
+  <MSTest>
+    <DeploymentEnabled>False</DeploymentEnabled>
+  </MSTest>
+
+</RunSettings>

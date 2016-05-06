@@ -1,0 +1,525 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{4E5BBFD0-E349-41A3-9AFA-4624D3FB7654}</ProjectGuid>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <Keyword>ManagedCProj</Keyword>
+    <RootNamespace>zuki.tools.llvm.clang</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <ProjectName>clang</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CLRSupport>true</CLRSupport>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CLRSupport>true</CLRSupport>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CLRSupport>true</CLRSupport>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CLRSupport>true</CLRSupport>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)out\$(Platform)\$(Configuration)\</OutDir>
+    <TargetName>$(RootNamespace)</TargetName>
+    <LinkKeyFile>$(SolutionDir)..\build\zuki-oss.snk</LinkKeyFile>
+    <CodeAnalysisRuleSet>MixedRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)out\$(Platform)\$(Configuration)\</OutDir>
+    <TargetName>$(RootNamespace)</TargetName>
+    <LinkKeyFile>$(SolutionDir)..\build\zuki-oss.snk</LinkKeyFile>
+    <CodeAnalysisRuleSet>MixedRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)out\$(Platform)\$(Configuration)\</OutDir>
+    <TargetName>$(RootNamespace)</TargetName>
+    <LinkKeyFile>$(SolutionDir)..\build\zuki-oss.snk</LinkKeyFile>
+    <CodeAnalysisRuleSet>MixedRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)out\$(Platform)\$(Configuration)\</OutDir>
+    <TargetName>$(RootNamespace)</TargetName>
+    <LinkKeyFile>$(SolutionDir)..\build\zuki-oss.snk</LinkKeyFile>
+    <CodeAnalysisRuleSet>MixedRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\external-libclang\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies />
+      <GenerateDebugInformation>Debug</GenerateDebugInformation>
+    </Link>
+    <PreBuildEvent>
+      <Command>"$(SolutionDir)..\build\zuki.build.tools.mkversion.exe" "$(ProjectDir)tmp" "-ini:$(ProjectDir)version.ini" -format:rc,cpp</Command>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\external-libclang\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies />
+      <GenerateDebugInformation>Debug</GenerateDebugInformation>
+    </Link>
+    <PreBuildEvent>
+      <Command>"$(SolutionDir)..\build\zuki.build.tools.mkversion.exe" "$(ProjectDir)tmp" "-ini:$(ProjectDir)version.ini" -format:rc,cpp</Command>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\external-libclang\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies />
+    </Link>
+    <PreBuildEvent>
+      <Command>"$(SolutionDir)..\build\zuki.build.tools.mkversion.exe" "$(ProjectDir)tmp" "-ini:$(ProjectDir)version.ini" -format:rc,cpp</Command>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\external-libclang\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies />
+    </Link>
+    <PreBuildEvent>
+      <Command>"$(SolutionDir)..\build\zuki.build.tools.mkversion.exe" "$(ProjectDir)tmp" "-ini:$(ProjectDir)version.ini" -format:rc,cpp</Command>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\external-libclang\include\clang-c\BuildSystem.h" />
+    <ClInclude Include="..\..\external-libclang\include\clang-c\CXCompilationDatabase.h" />
+    <ClInclude Include="..\..\external-libclang\include\clang-c\CXErrorCode.h" />
+    <ClInclude Include="..\..\external-libclang\include\clang-c\CXString.h" />
+    <ClInclude Include="..\..\external-libclang\include\clang-c\Documentation.h" />
+    <ClInclude Include="..\..\external-libclang\include\clang-c\Index.h" />
+    <ClInclude Include="..\..\external-libclang\include\clang-c\Platform.h" />
+    <ClInclude Include="ArgumentCursorCollection.h" />
+    <ClInclude Include="ArgumentTypeCollection.h" />
+    <ClInclude Include="AutoGCHandle.h" />
+    <ClInclude Include="BlockCommandComment.h" />
+    <ClInclude Include="BlockContentComment.h" />
+    <ClInclude Include="CallingConvention.h" />
+    <ClInclude Include="IndexAbortEventArgs.h" />
+    <ClInclude Include="IndexActionPointerHandle.h" />
+    <ClInclude Include="IndexBaseClass.h" />
+    <ClInclude Include="IndexBaseClassCollection.h" />
+    <ClInclude Include="IndexCxxClassDeclaration.h" />
+    <ClInclude Include="IndexDeclarationEventArgs.h" />
+    <ClInclude Include="IndexDeclarationKind.h" />
+    <ClInclude Include="IndexDiagnosticsEventArgs.h" />
+    <ClInclude Include="IndexEnteredMainFileEventArgs.h" />
+    <ClInclude Include="IndexEntityReferenceEventArgs.h" />
+    <ClInclude Include="IndexIBOutletCollectionAttribute.h" />
+    <ClInclude Include="IndexImportedASTFileEventArgs.h" />
+    <ClInclude Include="IndexIncludedFileEventArgs.h" />
+    <ClInclude Include="IndexObjectiveCCategoryDeclaration.h" />
+    <ClInclude Include="IndexObjectiveCContainerDeclaration.h" />
+    <ClInclude Include="IndexObjectiveCInterfaceDeclaration.h" />
+    <ClInclude Include="IndexObjectiveCPropertyDeclaration.h" />
+    <ClInclude Include="IndexObjectiveCProtocolReference.h" />
+    <ClInclude Include="IndexObjectiveCProtocolReferenceCollection.h" />
+    <ClInclude Include="IndexObjectiveCProtocolDeclaration.h" />
+    <ClInclude Include="UnmanagedTypeSafeHandle.h" />
+    <ClInclude Include="CompletionResultDiagnosticCollection.h" />
+    <ClInclude Include="DiagnosticChildCollection.h" />
+    <ClInclude Include="Clang.h" />
+    <ClInclude Include="ClangException.h" />
+    <ClInclude Include="CompletionResult.h" />
+    <ClInclude Include="CompletionChunk.h" />
+    <ClInclude Include="CompletionChunkCollection.h" />
+    <ClInclude Include="CompletionChunkKind.h" />
+    <ClInclude Include="CompletionResultCollection.h" />
+    <ClInclude Include="CompletionOptions.h" />
+    <ClInclude Include="CommentKind.h" />
+    <ClInclude Include="CompletionContext.h" />
+    <ClInclude Include="CompletionString.h" />
+    <ClInclude Include="CursorVisibility.h" />
+    <ClInclude Include="EnumConstant.h" />
+    <ClInclude Include="ExtentExtensions.h" />
+    <ClInclude Include="IndexAction.h" />
+    <ClInclude Include="IndexAttribute.h" />
+    <ClInclude Include="IndexAttributeCollection.h" />
+    <ClInclude Include="IndexAttributeKind.h" />
+    <ClInclude Include="IndexContainer.h" />
+    <ClInclude Include="IndexDeclaration.h" />
+    <ClInclude Include="IndexDeclarationFlags.h" />
+    <ClInclude Include="IndexEntityCxxTemplateKind.h" />
+    <ClInclude Include="IndexEntityKind.h" />
+    <ClInclude Include="IndexDiagnosticCollection.h" />
+    <ClInclude Include="IndexEntity.h" />
+    <ClInclude Include="IndexEntityLanguage.h" />
+    <ClInclude Include="IndexEntityReference.h" />
+    <ClInclude Include="IndexEntityReferenceKind.h" />
+    <ClInclude Include="IndexEventArgs.h" />
+    <ClInclude Include="IndexImportedASTFile.h" />
+    <ClInclude Include="IndexIncludedFile.h" />
+    <ClInclude Include="IndexObjectiveCContainerKind.h" />
+    <ClInclude Include="IndexOptions.h" />
+    <ClInclude Include="LoadedDiagnosticCollection.h" />
+    <ClInclude Include="DiagnosticCollection.h" />
+    <ClInclude Include="NullComment.h" />
+    <ClInclude Include="ParsedComment.h" />
+    <ClInclude Include="HtmlEndTagComment.h" />
+    <ClInclude Include="HtmlStartTagComment.h" />
+    <ClInclude Include="HtmlTagComment.h" />
+    <ClInclude Include="InlineCommandComment.h" />
+    <ClInclude Include="InlineCommandRenderKind.h" />
+    <ClInclude Include="InlineContentComment.h" />
+    <ClInclude Include="LocationCollection.h" />
+    <ClInclude Include="ModuleMapDescriptor.h" />
+    <ClInclude Include="ModuleMapDescriptorExtensions.h" />
+    <ClInclude Include="ParagraphComment.h" />
+    <ClInclude Include="ParamCommandComment.h" />
+    <ClInclude Include="ParameterDirection.h" />
+    <ClInclude Include="CommentCollection.h" />
+    <ClInclude Include="Comment.h" />
+    <ClInclude Include="ReferenceHandle.h" />
+    <ClInclude Include="StringCollection.h" />
+    <ClInclude Include="StringDictionary.h" />
+    <ClInclude Include="TextComment.h" />
+    <ClInclude Include="TParamCommandComment.h" />
+    <ClInclude Include="TParamCommandIndex.h" />
+    <ClInclude Include="TranslationUnitDiagnosticCollection.h" />
+    <ClInclude Include="TranslationUnitExtensions.h" />
+    <ClInclude Include="CompilationDatabase.h" />
+    <ClInclude Include="CompilationDatabaseLoadErrorCode.h" />
+    <ClInclude Include="CompilationDatabaseLoadException.h" />
+    <ClInclude Include="CompileCommand.h" />
+    <ClInclude Include="CompileCommandArgumentCollection.h" />
+    <ClInclude Include="CompileCommandCollection.h" />
+    <ClInclude Include="CompileCommandSourceMappingCollection.h" />
+    <ClInclude Include="CompileCommandSourceMapping.h" />
+    <ClInclude Include="Cursor.h" />
+    <ClInclude Include="CursorExtensions.h" />
+    <ClInclude Include="CxxAccessSpecifier.h" />
+    <ClInclude Include="Availability.h" />
+    <ClInclude Include="CursorCollection.h" />
+    <ClInclude Include="CursorComment.h" />
+    <ClInclude Include="CursorKind.h" />
+    <ClInclude Include="EnumerateChildrenFunc.h" />
+    <ClInclude Include="EnumerateChildrenResult.h" />
+    <ClInclude Include="EnumerateFieldsFunc.h" />
+    <ClInclude Include="EnumerateFieldsResult.h" />
+    <ClInclude Include="EnumerateIncludedFileFunc.h" />
+    <ClInclude Include="EnumerateIncludeDirectivesResult.h" />
+    <ClInclude Include="EnumerateIncludeDirectivesFunc.h" />
+    <ClInclude Include="EnumerateReferencesFunc.h" />
+    <ClInclude Include="EnumerateReferencesResult.h" />
+    <ClInclude Include="FileExtensions.h" />
+    <ClInclude Include="GCHandleRef.h" />
+    <ClInclude Include="Language.h" />
+    <ClInclude Include="Linkage.h" />
+    <ClInclude Include="CxxReferenceQualifier.h" />
+    <ClInclude Include="ObjectiveCDeclarationQualifier.h" />
+    <ClInclude Include="ObjectiveCPropertyAttribute.h" />
+    <ClInclude Include="OverloadedDeclarationCursorCollection.h" />
+    <ClInclude Include="OverriddenCursorCollection.h" />
+    <ClInclude Include="ReferenceNameExtent.h" />
+    <ClInclude Include="StorageClass.h" />
+    <ClInclude Include="Diagnostic.h" />
+    <ClInclude Include="DiagnosticCategory.h" />
+    <ClInclude Include="DiagnosticDisplayOptions.h" />
+    <ClInclude Include="DiagnosticEmphasisCollection.h" />
+    <ClInclude Include="DiagnosticFixIt.h" />
+    <ClInclude Include="DiagnosticFixItCollection.h" />
+    <ClInclude Include="DiagnosticLoadErrorCode.h" />
+    <ClInclude Include="DiagnosticLoadException.h" />
+    <ClInclude Include="ClangErrorCode.h" />
+    <ClInclude Include="DiagnosticSeverity.h" />
+    <ClInclude Include="Extent.h" />
+    <ClInclude Include="ExtentCollection.h" />
+    <ClInclude Include="File.h" />
+    <ClInclude Include="FileUniqueIdentifier.h" />
+    <ClInclude Include="Index.h" />
+    <ClInclude Include="IndexGlobalOptions.h" />
+    <ClInclude Include="Location.h" />
+    <ClInclude Include="LocationKind.h" />
+    <ClInclude Include="Module.h" />
+    <ClInclude Include="PlatformAvailability.h" />
+    <ClInclude Include="PlatformAvailabilityCollection.h" />
+    <ClInclude Include="ReadOnlyListEnumerator.h" />
+    <ClInclude Include="Remapping.h" />
+    <ClInclude Include="RemappingCollection.h" />
+    <ClInclude Include="ResourceUsageDictionary.h" />
+    <ClInclude Include="ResourceUsageKind.h" />
+    <ClInclude Include="TemplateArgument.h" />
+    <ClInclude Include="TemplateArgumentCollection.h" />
+    <ClInclude Include="TemplateArgumentKind.h" />
+    <ClInclude Include="TemplateArgumentTypeCollection.h" />
+    <ClInclude Include="Token.h" />
+    <ClInclude Include="TokenCollection.h" />
+    <ClInclude Include="TokenKind.h" />
+    <ClInclude Include="TopLevelHeaderCollection.h" />
+    <ClInclude Include="TranslationUnit.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="stdmove.h" />
+    <ClInclude Include="TranslationUnitHandle.h" />
+    <ClInclude Include="TranslationUnitParseOptions.h" />
+    <ClInclude Include="TranslationUnitReferenceHandle.h" />
+    <ClInclude Include="TranslationUnitSaveErrorCode.h" />
+    <ClInclude Include="TranslationUnitSaveException.h" />
+    <ClInclude Include="TranslationUnitSaveOptions.h" />
+    <ClInclude Include="Type.h" />
+    <ClInclude Include="TypeCollection.h" />
+    <ClInclude Include="TypeExtensions.h" />
+    <ClInclude Include="TypeFieldOffsets.h" />
+    <ClInclude Include="StringUtil.h" />
+    <ClInclude Include="TypeKind.h" />
+    <ClInclude Include="UnifiedSymbolResolution.h" />
+    <ClInclude Include="UnsavedFile.h" />
+    <ClInclude Include="VerbatimBlockCommandComment.h" />
+    <ClInclude Include="VerbatimBlockLineComment.h" />
+    <ClInclude Include="VerbatimLineComment.h" />
+    <ClInclude Include="VirtualFileOverlay.h" />
+    <ClInclude Include="VirtualFileOverlayExtensions.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ArgumentCursorCollection.cpp" />
+    <ClCompile Include="ArgumentTypeCollection.cpp" />
+    <ClCompile Include="AssemblyInfo.cpp" />
+    <ClCompile Include="AutoGCHandle.cpp" />
+    <ClCompile Include="BlockCommandComment.cpp" />
+    <ClCompile Include="BlockContentComment.cpp" />
+    <ClCompile Include="CompletionResultDiagnosticCollection.cpp" />
+    <ClCompile Include="DiagnosticChildCollection.cpp" />
+    <ClCompile Include="Clang.cpp" />
+    <ClCompile Include="ClangException.cpp" />
+    <ClCompile Include="CompletionResult.cpp" />
+    <ClCompile Include="CompletionChunk.cpp" />
+    <ClCompile Include="CompletionChunkCollection.cpp" />
+    <ClCompile Include="CompletionResultCollection.cpp" />
+    <ClCompile Include="CompletionString.cpp" />
+    <ClCompile Include="EnumConstant.cpp" />
+    <ClCompile Include="ExtentExtensions.cpp" />
+    <ClCompile Include="IndexAbortEventArgs.cpp" />
+    <ClCompile Include="IndexAction.cpp" />
+    <ClCompile Include="IndexAttribute.cpp" />
+    <ClCompile Include="IndexAttributeCollection.cpp" />
+    <ClCompile Include="IndexBaseClass.cpp" />
+    <ClCompile Include="IndexBaseClassCollection.cpp" />
+    <ClCompile Include="IndexContainer.cpp" />
+    <ClCompile Include="IndexCxxClassDeclaration.cpp" />
+    <ClCompile Include="IndexDeclaration.cpp" />
+    <ClCompile Include="IndexDeclarationEventArgs.cpp" />
+    <ClCompile Include="IndexDiagnosticCollection.cpp" />
+    <ClCompile Include="IndexDiagnosticsEventArgs.cpp" />
+    <ClCompile Include="IndexEnteredMainFileEventArgs.cpp" />
+    <ClCompile Include="IndexEntity.cpp" />
+    <ClCompile Include="IndexEntityKind.cpp" />
+    <ClCompile Include="IndexEntityReference.cpp" />
+    <ClCompile Include="IndexEntityReferenceEventArgs.cpp" />
+    <ClCompile Include="IndexEventArgs.cpp" />
+    <ClCompile Include="IndexIBOutletCollectionAttribute.cpp" />
+    <ClCompile Include="IndexImportedASTFile.cpp" />
+    <ClCompile Include="IndexImportedASTFileEventArgs.cpp" />
+    <ClCompile Include="IndexIncludedFile.cpp" />
+    <ClCompile Include="IndexIncludedFileEventArgs.cpp" />
+    <ClCompile Include="IndexObjectiveCCategoryDeclaration.cpp" />
+    <ClCompile Include="IndexObjectiveCContainerDeclaration.cpp" />
+    <ClCompile Include="IndexObjectiveCInterfaceDeclaration.cpp" />
+    <ClCompile Include="IndexObjectiveCPropertyDeclaration.cpp" />
+    <ClCompile Include="IndexObjectiveCProtocolReference.cpp" />
+    <ClCompile Include="IndexObjectiveCProtocolReferenceCollection.cpp" />
+    <ClCompile Include="IndexObjectiveCProtocolDeclaration.cpp" />
+    <ClCompile Include="LoadedDiagnosticCollection.cpp" />
+    <ClCompile Include="DiagnosticCollection.cpp" />
+    <ClCompile Include="NullComment.cpp" />
+    <ClCompile Include="ParsedComment.cpp" />
+    <ClCompile Include="HtmlEndTagComment.cpp" />
+    <ClCompile Include="HtmlStartTagComment.cpp" />
+    <ClCompile Include="HtmlTagComment.cpp" />
+    <ClCompile Include="InlineCommandComment.cpp" />
+    <ClCompile Include="InlineContentComment.cpp" />
+    <ClCompile Include="LocationCollection.cpp" />
+    <ClCompile Include="ModuleMapDescriptor.cpp" />
+    <ClCompile Include="ModuleMapDescriptorExtensions.cpp" />
+    <ClCompile Include="Comment.cpp" />
+    <ClCompile Include="CommentCollection.cpp" />
+    <ClCompile Include="ParagraphComment.cpp" />
+    <ClCompile Include="ParamCommandComment.cpp" />
+    <ClCompile Include="StringCollection.cpp" />
+    <ClCompile Include="StringDictionary.cpp" />
+    <ClCompile Include="TextComment.cpp" />
+    <ClCompile Include="TParamCommandComment.cpp" />
+    <ClCompile Include="TParamCommandIndex.cpp" />
+    <ClCompile Include="TranslationUnitDiagnosticCollection.cpp" />
+    <ClCompile Include="TranslationUnitExtensions.cpp" />
+    <ClCompile Include="CompileCommand.cpp" />
+    <ClCompile Include="CompileCommandArgumentCollection.cpp" />
+    <ClCompile Include="CompileCommandCollection.cpp" />
+    <ClCompile Include="CompileCommandSourceMapping.cpp" />
+    <ClCompile Include="CompilationDatabase.cpp" />
+    <ClCompile Include="CompilationDatabaseLoadErrorCode.cpp" />
+    <ClCompile Include="CompilationDatabaseLoadException.cpp" />
+    <ClCompile Include="CompileCommandSourceMappingCollection.cpp" />
+    <ClCompile Include="Cursor.cpp" />
+    <ClCompile Include="CursorCollection.cpp" />
+    <ClCompile Include="CursorComment.cpp" />
+    <ClCompile Include="CursorExtensions.cpp" />
+    <ClCompile Include="CursorKind.cpp" />
+    <ClCompile Include="Diagnostic.cpp" />
+    <ClCompile Include="DiagnosticCategory.cpp" />
+    <ClCompile Include="DiagnosticEmphasisCollection.cpp" />
+    <ClCompile Include="DiagnosticFixIt.cpp" />
+    <ClCompile Include="DiagnosticFixItCollection.cpp" />
+    <ClCompile Include="DiagnosticLoadException.cpp" />
+    <ClCompile Include="ClangErrorCode.cpp" />
+    <ClCompile Include="EnumerateChildrenFunc.cpp" />
+    <ClCompile Include="EnumerateChildrenResult.cpp" />
+    <ClCompile Include="EnumerateFieldsFunc.cpp" />
+    <ClCompile Include="EnumerateFieldsResult.cpp" />
+    <ClCompile Include="EnumerateIncludedFileFunc.cpp" />
+    <ClCompile Include="EnumerateIncludeDirectivesFunc.cpp" />
+    <ClCompile Include="EnumerateIncludeDirectivesResult.cpp" />
+    <ClCompile Include="EnumerateReferencesFunc.cpp" />
+    <ClCompile Include="EnumerateReferencesResult.cpp" />
+    <ClCompile Include="Extent.cpp" />
+    <ClCompile Include="ExtentCollection.cpp" />
+    <ClCompile Include="File.cpp" />
+    <ClCompile Include="FileExtensions.cpp" />
+    <ClCompile Include="FileUniqueIdentifier.cpp" />
+    <ClCompile Include="Index.cpp" />
+    <ClCompile Include="Location.cpp" />
+    <ClCompile Include="Module.cpp" />
+    <ClCompile Include="OverloadedDeclarationCursorCollection.cpp" />
+    <ClCompile Include="OverriddenCursorCollection.cpp" />
+    <ClCompile Include="PlatformAvailability.cpp" />
+    <ClCompile Include="PlatformAvailabilityCollection.cpp" />
+    <ClCompile Include="ReadOnlyListEnumerator.cpp" />
+    <ClCompile Include="Remapping.cpp" />
+    <ClCompile Include="RemappingCollection.cpp" />
+    <ClCompile Include="ResourceUsageDictionary.cpp" />
+    <ClCompile Include="ResourceUsageKind.cpp" />
+    <ClCompile Include="TemplateArgument.cpp" />
+    <ClCompile Include="TemplateArgumentCollection.cpp" />
+    <ClCompile Include="TemplateArgumentTypeCollection.cpp" />
+    <ClCompile Include="Token.cpp" />
+    <ClCompile Include="TokenCollection.cpp" />
+    <ClCompile Include="TopLevelHeaderCollection.cpp" />
+    <ClCompile Include="TranslationUnit.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="tmp\version.cpp" />
+    <ClCompile Include="TranslationUnitSaveErrorCode.cpp" />
+    <ClCompile Include="TranslationUnitSaveException.cpp" />
+    <ClCompile Include="Type.cpp" />
+    <ClCompile Include="TypeCollection.cpp" />
+    <ClCompile Include="TypeExtensions.cpp" />
+    <ClCompile Include="TypeFieldOffsets.cpp" />
+    <ClCompile Include="StringUtil.cpp" />
+    <ClCompile Include="TypeKind.cpp" />
+    <ClCompile Include="UnifiedSymbolResolution.cpp" />
+    <ClCompile Include="UnsavedFile.cpp" />
+    <ClCompile Include="VerbatimBlockCommandComment.cpp" />
+    <ClCompile Include="VerbatimBlockLineComment.cpp" />
+    <ClCompile Include="VerbatimLineComment.cpp" />
+    <ClCompile Include="VirtualFileOverlay.cpp" />
+    <ClCompile Include="VirtualFileOverlayExtensions.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="tmp\version.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="version.ini" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="..\..\external-libclang\bin\x64\libclang.lib">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </Library>
+    <Library Include="..\..\external-libclang\bin\Win32\libclang.lib">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </Library>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

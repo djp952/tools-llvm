@@ -1,0 +1,7 @@
+[
+{
+  "directory": "C:\home\john.doe\MyProject",
+  "command": "clang++ -o project.o -c C:\\\\home\\\\john.doe\\\\MyProject\\\\project.cpp",
+  "file": "C:\home\john.doe\MyProject\project.cpp"
+},
+]
