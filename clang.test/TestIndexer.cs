@@ -725,7 +725,7 @@ namespace zuki.tools.llvm.clang.test
 				index.StartedTranslationUnit += OnStartedTranslationUnit;
 
 				IndexerState state = new IndexerState();
-				index.IndexSourceFile(inpath, args, IndexOptions.None, state);
+				index.IndexSourceFile(inpath, args, IndexOptions.DetailedPreprocessingRecord, state);
 			}
 		}
 

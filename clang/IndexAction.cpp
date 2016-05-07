@@ -140,6 +140,7 @@ void IndexAction::IndexSourceFile(String^ filename, IEnumerable<String^>^ args, 
 	int						numargs = 0;				// Number of argument strings
 	int						numunsaved = 0;				// Number of UnsavedFile object instances
 	bool					fullcmdline = false;		// Flag if args contains a full command line
+	unsigned int			transunitoptions = 0;		// Translation unit specific option flags
 
 	CHECK_DISPOSED(m_disposed);
 
@@ -169,6 +170,14 @@ void IndexAction::IndexSourceFile(String^ filename, IEnumerable<String^>^ args, 
 			options = IndexOptions(options & ~IndexOptions::ArgumentsAreFullCommandLine);
 		}
 
+		// The custom IndexOptions::DetailedPreprocessingRecord has to be checked and removed from the flags
+		// before they are passed into clang -- this is a translation unit flag, not an indexer flag
+		if((options & IndexOptions::DetailedPreprocessingRecord) == IndexOptions::DetailedPreprocessingRecord) {
+
+			transunitoptions = CXTranslationUnit_DetailedPreprocessingRecord;
+			options = IndexOptions(options & ~IndexOptions::DetailedPreprocessingRecord);
+		}
+
 		// Convert the managed path string into a standard C-style string (NULL is OK here)
 		char* pszfilename = StringUtil::ToCharPointer(filename, CP_UTF8);
 
@@ -188,8 +197,8 @@ void IndexAction::IndexSourceFile(String^ filename, IEnumerable<String^>^ args, 
 
 					// Index the source file using the provided arguments and unsaved file objects
 					int result = (fullcmdline) ?
-						clang_indexSourceFileFullArgv(IndexActionHandle::Reference(m_handle), gcstate.ToPointer(), &callbacks, sizeof(IndexerCallbacks), static_cast<unsigned int>(options), pszfilename, rgszargs, numargs, rgunsaved, numunsaved, __nullptr, 0) :
-						clang_indexSourceFile(IndexActionHandle::Reference(m_handle), gcstate.ToPointer(), &callbacks, sizeof(IndexerCallbacks), static_cast<unsigned int>(options), pszfilename, rgszargs, numargs, rgunsaved, numunsaved, __nullptr, 0);
+						clang_indexSourceFileFullArgv(IndexActionHandle::Reference(m_handle), gcstate.ToPointer(), &callbacks, sizeof(IndexerCallbacks), static_cast<unsigned int>(options), pszfilename, rgszargs, numargs, rgunsaved, numunsaved, __nullptr, transunitoptions) :
+						clang_indexSourceFile(IndexActionHandle::Reference(m_handle), gcstate.ToPointer(), &callbacks, sizeof(IndexerCallbacks), static_cast<unsigned int>(options), pszfilename, rgszargs, numargs, rgunsaved, numunsaved, __nullptr, transunitoptions);
 
 					if(result != CXError_Success) throw gcnew ClangException(CXErrorCode(result));
 

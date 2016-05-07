@@ -46,6 +46,11 @@ public enum class IndexOptions
 	SuppressWarnings					= CXIndexOptFlags::CXIndexOpt_SuppressWarnings,
 	SkipParsedBodiesInSession			= CXIndexOptFlags::CXIndexOpt_SkipParsedBodiesInSession,
 
+	// This is a custom flag used to set CXTranslationUnit_DetailedPreprocessingRecord during
+	// indexing.  This is the only translation unit flag that's obeyed by the indexer when a
+	// translation unit is not requested after indexing is complete
+	DetailedPreprocessingRecord			= 0x20000000,
+
 	// This is a custom flag put in to handle clang_indexSourceFile() without requiring a complete
 	// duplicate set of overloaded IndexAction creation methods, the method signature is identical 
 	// but the interpretation changes -- I think it should have been a flag in the clang API
