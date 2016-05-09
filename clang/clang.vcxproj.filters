@@ -1081,6 +1081,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="version.ini" />
+    <None Include="clang.nuspec" />
+    <None Include="clang.targets" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="..\..\external-libclang\bin\Win32\libclang.lib">

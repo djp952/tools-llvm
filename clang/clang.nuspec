@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package>
+  <metadata minClientVersion="2.5">
+    <id>zuki.tools.llvm.clang</id>
+    <version>$version$</version>
+    <authors>Michael G. Brehm</authors>
+    <owners>Michael G. Brehm</owners>
+    <licenseUrl>https://opensource.org/licenses/MIT</licenseUrl>
+    <projectUrl>https://github.com/djp952/tools-llvm</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <summary>Managed code bindings/wrapper classes for libclang v3.8 (x86 and x64)</summary>
+    <description>Provides a comprehensive object model that exposes the entire libclang API including static indexing, event driven indexing, code completion, build system, compilation database, and documentation parsing. Requires Microsoft.NET version 4.5 or higher.</description>
+    <releaseNotes>Version 1.0 (libclang v3.8.0)
+* Initial release
+    </releaseNotes>
+    <copyright>Copyright (C)2016 Michael G. Brehm</copyright>
+    <tags>clang libclang zuki</tags>
+  </metadata>
+</package>
