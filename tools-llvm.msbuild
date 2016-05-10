@@ -31,6 +31,7 @@ Targets:
     <MSBuild Projects="tools-llvm.sln" Properties="Configuration=Release;Platform=Win32" Targets="Clean" ContinueOnError="false"/>
     <MSBuild Projects="tools-llvm.sln" Properties="Configuration=Release;Platform=x64" Targets="Clean" ContinueOnError="false"/>
     <RemoveDir Directories="$(SolutionDir)clang\tmp"/>
+    <RemoveDir Directories="$(SolutionDir)clang.samples\tmp"/>
     <RemoveDir Directories="$(SolutionDir)clang.test\tmp"/>
     <RemoveDir Directories="$(SolutionDir)out"/>
   </Target>
@@ -71,13 +72,24 @@ Targets:
       <PackageDir>$(SolutionDir)out\nuget\</PackageDir>
       <PackageLibDir>$(PackageDir)lib\net45\</PackageLibDir>
       <PackageBuildDir>$(PackageDir)build\net45\</PackageBuildDir>
+      <SamplesPackageVersion>$([System.IO.File]::ReadAllText($(SolutionDir)clang.samples\tmp\version.txt))</SamplesPackageVersion>
+      <SamplesPackageDir>$(SolutionDir)out\nuget.samples\</SamplesPackageDir>
+      <SamplesPackageContentDir>$(SamplesPackageDir)content\</SamplesPackageContentDir>
     </PropertyGroup>
 
-    <RemoveDir Directories="$(PackageDir)" ContinueOnError="false"/>
+    <ItemGroup>
+      <SampleFiles Include="$(SolutionDir)clang.samples\Samples\**\*.*" />
+    </ItemGroup>
     
+    <RemoveDir Directories="$(PackageDir)" ContinueOnError="false"/>
+    <RemoveDir Directories="$(SamplesPackageDir)" ContinueOnError="false"/>
+
     <MakeDir Directories="$(PackageDir)" ContinueOnError="false"/>
     <MakeDir Directories="$(PackageLibDir)" ContinueOnError="false"/>
     <MakeDir Directories="$(PackageBuildDir)" ContinueOnError="false"/>
+
+    <MakeDir Directories="$(SamplesPackageDir)" ContinueOnError="false"/>
+    <MakeDir Directories="$(SamplesPackageContentDir)" ContinueOnError="false"/>
 
     <Copy SourceFiles="$(SolutionDir)clang\clang.nuspec" DestinationFiles="$(PackageDir)zuki.tools.llvm.clang.nuspec" ContinueOnError="false"/>
     <Copy SourceFiles="$(SolutionDir)out\Win32\Release\zuki.tools.llvm.clang.dll" DestinationFolder="$(PackageLibDir)" ContinueOnError="false"/>
@@ -86,9 +98,12 @@ Targets:
     <Copy SourceFiles="$(SolutionDir)..\external-libclang\bin\Win32\libclang.dll" DestinationFolder="$(PackageBuildDir)x86\" ContinueOnError="false"/>
     <Copy SourceFiles="$(SolutionDir)..\external-libclang\bin\x64\libclang.dll" DestinationFolder="$(PackageBuildDir)x64\" ContinueOnError="false"/>
     <Copy SourceFiles="$(SolutionDir)clang\clang.targets" DestinationFiles="$(PackageBuildDir)zuki.tools.llvm.clang.targets" ContinueOnError="false"/>
-
     <Exec Command="$(NuGetExe) pack $(PackageDir)zuki.tools.llvm.clang.nuspec -OutputDirectory $(PackageDir) -Version $(PackageVersion)" ContinueOnError="false" />
 
+    <Copy SourceFiles="$(SolutionDir)clang.samples\clang.samples.nuspec" DestinationFiles="$(SamplesPackageDir)zuki.tools.llvm.clang.Samples.nuspec" ContinueOnError="false"/>
+    <Copy SourceFiles="@(SampleFiles)" DestinationFolder="$(SamplesPackageContentDir)Samples\%(RecursiveDir)" ContinueOnError="false"/>
+    <Exec Command="$(NuGetExe) pack $(SamplesPackageDir)zuki.tools.llvm.clang.Samples.nuspec -OutputDirectory $(SamplesPackageDir) -Version $(SamplesPackageVersion)" ContinueOnError="false" />
+
   </Target>
-  
+
 </Project>

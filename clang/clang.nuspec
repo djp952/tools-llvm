@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <package>
   <metadata minClientVersion="2.5">
+    <title>zClang</title>
     <id>zuki.tools.llvm.clang</id>
     <version>$version$</version>
     <authors>Michael G. Brehm</authors>
