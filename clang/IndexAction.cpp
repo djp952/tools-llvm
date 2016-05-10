@@ -277,9 +277,17 @@ int IndexAction::OnAbortQuery(CXClientData context, void* reserved)
 	Object^ state = (context == __nullptr) ? nullptr : GCHandle::FromIntPtr(IntPtr(context)).Target;
 
 	IndexAbortEventArgs^ args = gcnew IndexAbortEventArgs(state);
-	m_index->Abort(m_index, args);
+	
+	// The indexer typically runs in an unmanaged thread; do not allow exceptions to propagate
+	// out of the managed handler.  In this case the abort flag can be automatically set if the
+	// managed Abort event handler itself fails
+	try {
 
-	return (args->Abort) ? -1 : 0;
+		m_index->Abort(m_index, args);
+		return (args->Abort) ? -1 : 0;
+	} 
+
+	catch(Exception^) { return -1; }
 }
 
 //---------------------------------------------------------------------------
@@ -302,7 +310,8 @@ void IndexAction::OnDiagnostics(CXClientData context, CXDiagnosticSet diagnostic
 	Object^ state = (context == __nullptr) ? nullptr : GCHandle::FromIntPtr(IntPtr(context)).Target;
 
 	msclr::auto_handle<IndexActionCallbackHandle> handle(gcnew IndexActionCallbackHandle(m_handle, __nullptr));
-	m_index->Diagnostics(m_index, gcnew IndexDiagnosticsEventArgs(state, IndexDiagnosticCollection::Create(handle.get(), diagnostics)));
+	try { m_index->Diagnostics(m_index, gcnew IndexDiagnosticsEventArgs(state, IndexDiagnosticCollection::Create(handle.get(), diagnostics))); }
+	catch(Exception^) { /* DO NOTHING */ }
 }
 
 //---------------------------------------------------------------------------
@@ -325,7 +334,8 @@ CXIdxClientFile IndexAction::OnEnteredMainFile(CXClientData context, CXFile main
 	Object^ state = (context == __nullptr) ? nullptr : GCHandle::FromIntPtr(IntPtr(context)).Target;
 
 	msclr::auto_handle<IndexActionCallbackHandle> handle(gcnew IndexActionCallbackHandle(m_handle, __nullptr));
-	m_index->EnteredMainFile(m_index, gcnew IndexEnteredMainFileEventArgs(state, File::Create(handle.get(), TranslationUnitHandle::Null, mainfile)));
+	try { m_index->EnteredMainFile(m_index, gcnew IndexEnteredMainFileEventArgs(state, File::Create(handle.get(), TranslationUnitHandle::Null, mainfile))); }
+	catch(Exception^) { /* DO NOTHING */ }
 
 	return mainfile;
 }
@@ -348,7 +358,8 @@ CXIdxClientASTFile IndexAction::OnImportedASTFile(CXClientData context, const CX
 	Object^ state = (context == __nullptr) ? nullptr : GCHandle::FromIntPtr(IntPtr(context)).Target;
 
 	msclr::auto_handle<IndexActionCallbackHandle> handle(gcnew IndexActionCallbackHandle(m_handle, __nullptr));
-	m_index->ImportedASTFile(m_index, gcnew IndexImportedASTFileEventArgs(state, IndexImportedASTFile::Create(handle.get(), this, info)));
+	try { m_index->ImportedASTFile(m_index, gcnew IndexImportedASTFileEventArgs(state, IndexImportedASTFile::Create(handle.get(), this, info))); }
+	catch(Exception^) { /* DO NOTHING */ }
 
 	return info->file;
 }
@@ -371,7 +382,8 @@ CXIdxClientFile IndexAction::OnIncludedFile(CXClientData context, const CXIdxInc
 	Object^ state = (context == __nullptr) ? nullptr : GCHandle::FromIntPtr(IntPtr(context)).Target;
 
 	msclr::auto_handle<IndexActionCallbackHandle> handle(gcnew IndexActionCallbackHandle(m_handle, __nullptr));
-	m_index->IncludedFile(m_index, gcnew IndexIncludedFileEventArgs(state, IndexIncludedFile::Create(handle.get(), this, info)));
+	try { m_index->IncludedFile(m_index, gcnew IndexIncludedFileEventArgs(state, IndexIncludedFile::Create(handle.get(), this, info))); }
+	catch(Exception^) { /* DO NOTHING */ }
 
 	return info->file;
 }
@@ -394,7 +406,8 @@ void IndexAction::OnIndexDeclaration(CXClientData context, const CXIdxDeclInfo* 
 	Object^ state = (context == __nullptr) ? nullptr : GCHandle::FromIntPtr(IntPtr(context)).Target;
 
 	msclr::auto_handle<IndexActionCallbackHandle> handle(gcnew IndexActionCallbackHandle(m_handle, __nullptr));
-	m_index->Declaration(m_index, gcnew IndexDeclarationEventArgs(state, IndexDeclaration::Create(handle.get(), this, info)));
+	try { m_index->Declaration(m_index, gcnew IndexDeclarationEventArgs(state, IndexDeclaration::Create(handle.get(), this, info))); }
+	catch(Exception^) { /* DO NOTHING */ }
 }
 
 //---------------------------------------------------------------------------
@@ -415,7 +428,8 @@ void IndexAction::OnIndexEntityReference(CXClientData context, const CXIdxEntity
 	Object^ state = (context == __nullptr) ? nullptr : GCHandle::FromIntPtr(IntPtr(context)).Target;
 
 	msclr::auto_handle<IndexActionCallbackHandle> handle(gcnew IndexActionCallbackHandle(m_handle, __nullptr));
-	m_index->EntityReference(m_index, gcnew IndexEntityReferenceEventArgs(state, IndexEntityReference::Create(handle.get(), this, info)));
+	try { m_index->EntityReference(m_index, gcnew IndexEntityReferenceEventArgs(state, IndexEntityReference::Create(handle.get(), this, info))); }
+	catch(Exception^) { /* DO NOTHING */ }
 }
 
 //---------------------------------------------------------------------------
@@ -436,7 +450,9 @@ CXIdxClientContainer IndexAction::OnStartedTranslationUnit(CXClientData context,
 	// Convert the context back into the optional caller context object
 	Object^ state = (context == __nullptr) ? nullptr : GCHandle::FromIntPtr(IntPtr(context)).Target;
 
-	m_index->StartedTranslationUnit(m_index, gcnew IndexEventArgs(state));
+	try { m_index->StartedTranslationUnit(m_index, gcnew IndexEventArgs(state)); }
+	catch(Exception^) { /* DO NOTHING */ }
+
 	return __nullptr;
 }
 
