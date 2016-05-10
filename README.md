@@ -5,10 +5,22 @@ Copyright (C)2016 Michael G. Brehm
 [MIT LICENSE](https://opensource.org/licenses/MIT)
 
 ##__MODULES__
-###__zuki.tools.llvm.clang__ - Managed wrapper/bindings for [__Clang__](http://clang.llvm.org/): a C language family frontend for LLVM
+__zuki.tools.llvm.clang__ - Managed code wrapper/bindings for [__Clang__](http://clang.llvm.org/): a C language family frontend for LLVM  
+__zuki.tools.llvm.clang.samples__ - Sample code for zuki.tools.llvm.clang  
+__zuki.tools.llvm.clang.test__ - Unit tests for zuki.tools.llvm.clang  
+
+##__NUGET PACKAGES__
+zuki.tools.llvm.clang is available as a public nuget package under the name 'zClang'. I also started working on some simple samples to help illustrate how to use the library:  
+   
+[__zClang__](https://www.nuget.org/packages/zuki.tools.llvm.clang/)  
+[__zClang Samples__](https://www.nuget.org/packages/zuki.tools.llvm.clang.Samples/)
+```
+PM> Install-Package zuki.tools.llvm.clang
+PM> Install-Package zuki.tools.llvm.clang.Samples   
+```
 
 ##__DOCUMENTATION__
-You're looking at it :) If there is any community interest for this project I'll consider writing some. Almost the entire libclang API (see __LIBCLANG API CALLS NOT IMPLEMENTED__ below for the exceptions) can be accessed through this library. I tried to make the object model relatively intuitive and easy to follow. You can always look at the unit tests for examples and get a feel for the overall breadth of this library. Everything starts with the static methods of the Clang object and cascade from there.  Please open an Issue if there are any specific (and relatively straightforward) examples that you would like to see generated that would add documentation value:
+You're looking at it :) If there is any community interest for this project I'll consider writing some. Almost the entire libclang API (see __LIBCLANG API CALLS NOT IMPLEMENTED__ below for the exceptions) can be accessed through this library. I tried to make the object model relatively intuitive and easy to follow. You can always look at the unit tests for examples and get a feel for the overall breadth of this library. Everything starts with the static methods of the Clang object and cascade from there.  Please open an Issue if there are any specific (and relatively straightforward) examples that you would like to see generated that would add documentation value, and I'll add them to the Samples nuget package:
 ```
 using zuki.tools.llvm.clang;
 using zuki.tools.llvm.clang.extensions;
