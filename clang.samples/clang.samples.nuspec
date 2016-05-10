@@ -1,0 +1,21 @@
+﻿<?xml version="1.0"?>
+<package>
+  <metadata minClientVersion="2.5">
+    <title>zClang Samples</title>
+    <id>zuki.tools.llvm.clang.Samples</id>
+    <version>$version$</version>
+    <authors>Michael G. Brehm</authors>
+    <owners>Michael G. Brehm</owners>
+    <licenseUrl>https://opensource.org/licenses/MIT</licenseUrl>
+    <projectUrl>https://github.com/djp952/tools-llvm</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <summary>This package contains samples that demonstrate the use of the zuki.tools.llvm.clang library</summary>
+    <description>This package contains samples that demonstrate the use of the zuki.tools.llvm.clang library</description>
+    <releaseNotes>Initial version; only contains a couple rudimentary samples to exercise the nuget package</releaseNotes>
+    <copyright>Copyright (C)2016 Michael G. Brehm</copyright>
+    <tags>clang libclang zuki samples</tags>
+    <dependencies>
+      <dependency id="zuki.tools.llvm.clang" version="1.0" />
+    </dependencies>
+  </metadata>
+</package>
