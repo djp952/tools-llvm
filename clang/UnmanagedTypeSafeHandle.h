@@ -85,7 +85,7 @@ public:
 		//
 		Reference(UnmanagedTypeSafeHandle<_type, _dispose>^ handle) : m_handle(handle)
 		{
-			if(Object::ReferenceEquals(handle, nullptr)) throw gcnew ArgumentNullException();
+			if(Object::ReferenceEquals(handle, nullptr)) throw gcnew ArgumentNullException("handle");
 			
 			m_handle->DangerousAddRef(m_release);
 			if(!m_release) throw gcnew ObjectDisposedException(UnmanagedTypeSafeHandle<_type, _dispose>::typeid->Name);

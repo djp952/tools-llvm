@@ -37,7 +37,7 @@ BEGIN_ROOT_NAMESPACE(zuki::tools::llvm::clang)
 // String manipulation helper functions
 //---------------------------------------------------------------------------
 
-ref class StringUtil
+ref class StringUtil abstract sealed
 {
 public:
 
