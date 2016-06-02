@@ -74,6 +74,11 @@ public:
 	// Overrides Object::ToString()
 	virtual String^ ToString(void) override;
 
+	// ToString
+	//
+	// Gets the string representation of the cursor kind
+	String^ ToString(String^ format);
+
 	//-----------------------------------------------------------------------
 	// Properties
 
