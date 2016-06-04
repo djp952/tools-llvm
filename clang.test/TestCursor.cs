@@ -1124,6 +1124,13 @@ namespace zuki.tools.llvm.clang.test
 				Assert.IsFalse(cursor.Kind.IsTranslationUnit);
 				Assert.IsFalse(cursor.Kind.IsUnexposed);
 			}
+
+			// GITHUB ISSUE #1 (https://github.com/djp952/tools-llvm/issues/1)
+			//
+			// Test the new "S" format specifier for short cursor kind names
+			Assert.AreEqual("macro definition", CursorKind.MacroDefinition.ToString());
+			Assert.AreEqual("MacroDefinition", CursorKind.MacroDefinition.ToString("S"));
+			Assert.AreEqual("MacroDefinition", CursorKind.MacroDefinition.ToString("s"));
 		}
 
 		[TestMethod(), TestCategory("Cursors")]

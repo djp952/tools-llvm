@@ -215,16 +215,19 @@ String^ CursorKind::ToString(void)
 //
 // Arguments:
 //
-//	format		- Format specifier (Only "E"/"e" right now)
+//	format		- Format specifier
 
 String^ CursorKind::ToString(String^ format)
 {
-	// This overload for ToString() was added to allow the enumeration name of the 
-	// cursor kind to be exposed since the generalized strings from clang aren't always 
-	// usable due to embedded spaces and special characters
+	// GITHUB ISSUE #1 (https://github.com/djp952/tools-llvm/issues/1)
+	//
+	// This overload for ToString() was added to allow the name of the CursorKind value
+	// type to be exposed since the generalized strings from clang aren't always usable 
+	// due to embedded spaces and special characters
 
-	// The only custom format implemented is "E"/"e" - "Enumeration Name"
-	if(String::IsNullOrEmpty(format) || (format->ToUpper() != "E")) return ToString();
+	// "S" / "s" --> SHORT NAME
+	//
+	if(String::IsNullOrEmpty(format) || (format->ToUpper() != "S")) return ToString();
 
 	switch(m_cursorkind) {
 
@@ -238,17 +241,17 @@ String^ CursorKind::ToString(String^ format)
 		case CXCursor_FunctionDecl:							return "FunctionDecl";
 		case CXCursor_VarDecl:								return "VarDecl";
 		case CXCursor_ParmDecl:								return "ParmDecl";
-		case CXCursor_ObjCInterfaceDecl:					return "ObjCInterfaceDecl";
-		case CXCursor_ObjCCategoryDecl:						return "ObjCCategoryDecl";
-		case CXCursor_ObjCProtocolDecl:						return "ObjCProtocolDecl";
-		case CXCursor_ObjCPropertyDecl:						return "ObjCPropertyDecl";
-		case CXCursor_ObjCIvarDecl:							return "ObjCIvarDecl";
-		case CXCursor_ObjCInstanceMethodDecl:				return "ObjCInstanceMethodDecl";
-		case CXCursor_ObjCClassMethodDecl:					return "ObjCClassMethodDecl";
-		case CXCursor_ObjCImplementationDecl:				return "ObjCImplementationDecl";
-		case CXCursor_ObjCCategoryImplDecl:					return "ObjCCategoryImplDecl";
+		case CXCursor_ObjCInterfaceDecl:					return "ObjectiveCInterfaceDecl";
+		case CXCursor_ObjCCategoryDecl:						return "ObjectiveCCategoryDecl";
+		case CXCursor_ObjCProtocolDecl:						return "ObjectiveCProtocolDecl";
+		case CXCursor_ObjCPropertyDecl:						return "ObjectiveCPropertyDecl";
+		case CXCursor_ObjCIvarDecl:							return "ObjectiveCIvarDecl";
+		case CXCursor_ObjCInstanceMethodDecl:				return "ObjectiveCInstanceMethodDecl";
+		case CXCursor_ObjCClassMethodDecl:					return "ObjectiveCClassMethodDecl";
+		case CXCursor_ObjCImplementationDecl:				return "ObjectiveCImplementationDecl";
+		case CXCursor_ObjCCategoryImplDecl:					return "ObjectiveCCategoryImplDecl";
 		case CXCursor_TypedefDecl:							return "TypedefDecl";
-		case CXCursor_CXXMethod:							return "CXXMethod";
+		case CXCursor_CXXMethod:							return "CxxMethod";
 		case CXCursor_Namespace:							return "Namespace";
 		case CXCursor_LinkageSpec:							return "LinkageSpec";
 		case CXCursor_Constructor:							return "Constructor";
@@ -264,14 +267,14 @@ String^ CursorKind::ToString(String^ format)
 		case CXCursor_UsingDirective:						return "UsingDirective";
 		case CXCursor_UsingDeclaration:						return "UsingDeclaration";
 		case CXCursor_TypeAliasDecl:						return "TypeAliasDecl";
-		case CXCursor_ObjCSynthesizeDecl:					return "ObjCSynthesizeDecl";
-		case CXCursor_ObjCDynamicDecl:						return "ObjCDynamicDecl";
-		case CXCursor_CXXAccessSpecifier:					return "CXXAccessSpecifier";
-		case CXCursor_ObjCSuperClassRef:					return "ObjCSuperClassRef";
-		case CXCursor_ObjCProtocolRef:						return "ObjCProtocolRef";
-		case CXCursor_ObjCClassRef:							return "ObjCClassRef";
+		case CXCursor_ObjCSynthesizeDecl:					return "ObjectiveCSynthesizeDecl";
+		case CXCursor_ObjCDynamicDecl:						return "ObjectiveCDynamicDecl";
+		case CXCursor_CXXAccessSpecifier:					return "CxxAccessSpecifier";
+		case CXCursor_ObjCSuperClassRef:					return "ObjectiveCSuperClassRef";
+		case CXCursor_ObjCProtocolRef:						return "ObjectiveCProtocolRef";
+		case CXCursor_ObjCClassRef:							return "ObjectiveCClassRef";
 		case CXCursor_TypeRef:								return "TypeRef";
-		case CXCursor_CXXBaseSpecifier:						return "CXXBaseSpecifier";
+		case CXCursor_CXXBaseSpecifier:						return "CxxBaseSpecifier";
 		case CXCursor_TemplateRef:							return "TemplateRef";
 		case CXCursor_NamespaceRef:							return "NamespaceRef";
 		case CXCursor_MemberRef:							return "MemberRef";
@@ -286,7 +289,7 @@ String^ CursorKind::ToString(String^ format)
 		case CXCursor_DeclRefExpr:							return "DeclRefExpr";
 		case CXCursor_MemberRefExpr:						return "MemberRefExpr";
 		case CXCursor_CallExpr:								return "CallExpr";
-		case CXCursor_ObjCMessageExpr:						return "ObjCMessageExpr";
+		case CXCursor_ObjCMessageExpr:						return "ObjectiveCMessageExpr";
 		case CXCursor_BlockExpr:							return "BlockExpr";
 		case CXCursor_IntegerLiteral:						return "IntegerLiteral";
 		case CXCursor_FloatingLiteral:						return "FloatingLiteral";
@@ -306,29 +309,29 @@ String^ CursorKind::ToString(String^ format)
 		case CXCursor_StmtExpr:								return "StmtExpr";
 		case CXCursor_GenericSelectionExpr:					return "GenericSelectionExpr";
 		case CXCursor_GNUNullExpr:							return "GNUNullExpr";
-		case CXCursor_CXXStaticCastExpr:					return "CXXStaticCastExpr";
-		case CXCursor_CXXDynamicCastExpr:					return "CXXDynamicCastExpr";
-		case CXCursor_CXXReinterpretCastExpr:				return "CXXReinterpretCastExpr";
-		case CXCursor_CXXConstCastExpr:						return "CXXConstCastExpr";
-		case CXCursor_CXXFunctionalCastExpr:				return "CXXFunctionalCastExpr";
-		case CXCursor_CXXTypeidExpr:						return "CXXTypeidExpr";
-		case CXCursor_CXXBoolLiteralExpr:					return "CXXBoolLiteralExpr";
-		case CXCursor_CXXNullPtrLiteralExpr:				return "CXXNullPtrLiteralExpr";
-		case CXCursor_CXXThisExpr:							return "CXXThisExpr";
-		case CXCursor_CXXThrowExpr:							return "CXXThrowExpr";
-		case CXCursor_CXXNewExpr:							return "CXXNewExpr";
-		case CXCursor_CXXDeleteExpr:						return "CXXDeleteExpr";
+		case CXCursor_CXXStaticCastExpr:					return "CxxStaticCastExpr";
+		case CXCursor_CXXDynamicCastExpr:					return "CxxDynamicCastExpr";
+		case CXCursor_CXXReinterpretCastExpr:				return "CxxReinterpretCastExpr";
+		case CXCursor_CXXConstCastExpr:						return "CxxConstCastExpr";
+		case CXCursor_CXXFunctionalCastExpr:				return "CxxFunctionalCastExpr";
+		case CXCursor_CXXTypeidExpr:						return "CxxTypeidExpr";
+		case CXCursor_CXXBoolLiteralExpr:					return "CxxBoolLiteralExpr";
+		case CXCursor_CXXNullPtrLiteralExpr:				return "CxxNullPtrLiteralExpr";
+		case CXCursor_CXXThisExpr:							return "CxxThisExpr";
+		case CXCursor_CXXThrowExpr:							return "CxxThrowExpr";
+		case CXCursor_CXXNewExpr:							return "CxxNewExpr";
+		case CXCursor_CXXDeleteExpr:						return "CxxDeleteExpr";
 		case CXCursor_UnaryExpr:							return "UnaryExpr";
-		case CXCursor_ObjCStringLiteral:					return "ObjCStringLiteral";
-		case CXCursor_ObjCEncodeExpr:						return "ObjCEncodeExpr";
-		case CXCursor_ObjCSelectorExpr:						return "ObjCSelectorExpr";
-		case CXCursor_ObjCProtocolExpr:						return "ObjCProtocolExpr";
-		case CXCursor_ObjCBridgedCastExpr:					return "ObjCBridgedCastExpr";
+		case CXCursor_ObjCStringLiteral:					return "ObjectiveCStringLiteral";
+		case CXCursor_ObjCEncodeExpr:						return "ObjectiveCEncodeExpr";
+		case CXCursor_ObjCSelectorExpr:						return "ObjectiveCSelectorExpr";
+		case CXCursor_ObjCProtocolExpr:						return "ObjectiveCProtocolExpr";
+		case CXCursor_ObjCBridgedCastExpr:					return "ObjectiveCBridgedCastExpr";
 		case CXCursor_PackExpansionExpr:					return "PackExpansionExpr";
 		case CXCursor_SizeOfPackExpr:						return "SizeOfPackExpr";
 		case CXCursor_LambdaExpr:							return "LambdaExpr";
-		case CXCursor_ObjCBoolLiteralExpr:					return "ObjCBoolLiteralExpr";
-		case CXCursor_ObjCSelfExpr:							return "ObjCSelfExpr";
+		case CXCursor_ObjCBoolLiteralExpr:					return "ObjectiveCBoolLiteralExpr";
+		case CXCursor_ObjCSelfExpr:							return "ObjectiveCSelfExpr";
 		case CXCursor_OMPArraySectionExpr:					return "OMPArraySectionExpr";
 		case CXCursor_UnexposedStmt:						return "UnexposedStmt";
 		case CXCursor_LabelStmt:							return "LabelStmt";
@@ -347,16 +350,16 @@ String^ CursorKind::ToString(String^ format)
 		case CXCursor_ReturnStmt:							return "ReturnStmt";
 		//case CXCursor_GCCAsmStmt:							return "GCCAsmStmt";
 		case CXCursor_AsmStmt:								return "AsmStmt";
-		case CXCursor_ObjCAtTryStmt:						return "ObjCAtTryStmt";
-		case CXCursor_ObjCAtCatchStmt:						return "ObjCAtCatchStmt";
-		case CXCursor_ObjCAtFinallyStmt:					return "ObjCAtFinallyStmt";
-		case CXCursor_ObjCAtThrowStmt:						return "ObjCAtThrowStmt";
-		case CXCursor_ObjCAtSynchronizedStmt:				return "ObjCAtSynchronizedStmt";
-		case CXCursor_ObjCAutoreleasePoolStmt:				return "ObjCAutoreleasePoolStmt";
-		case CXCursor_ObjCForCollectionStmt:				return "ObjCForCollectionStmt";
-		case CXCursor_CXXCatchStmt:							return "CXXCatchStmt";
-		case CXCursor_CXXTryStmt:							return "CXXTryStmt";
-		case CXCursor_CXXForRangeStmt:						return "CXXForRangeStmt";
+		case CXCursor_ObjCAtTryStmt:						return "ObjectiveCAtTryStmt";
+		case CXCursor_ObjCAtCatchStmt:						return "ObjectiveCAtCatchStmt";
+		case CXCursor_ObjCAtFinallyStmt:					return "ObjectiveCAtFinallyStmt";
+		case CXCursor_ObjCAtThrowStmt:						return "ObjectiveCAtThrowStmt";
+		case CXCursor_ObjCAtSynchronizedStmt:				return "ObjectiveCAtSynchronizedStmt";
+		case CXCursor_ObjCAutoreleasePoolStmt:				return "ObjectiveCAutoreleasePoolStmt";
+		case CXCursor_ObjCForCollectionStmt:				return "ObjectiveCForCollectionStmt";
+		case CXCursor_CXXCatchStmt:							return "CxxCatchStmt";
+		case CXCursor_CXXTryStmt:							return "CxxTryStmt";
+		case CXCursor_CXXForRangeStmt:						return "CxxForRangeStmt";
 		case CXCursor_SEHTryStmt:							return "SEHTryStmt";
 		case CXCursor_SEHExceptStmt:						return "SEHExceptStmt";
 		case CXCursor_SEHFinallyStmt:						return "SEHFinallyStmt";
@@ -397,8 +400,8 @@ String^ CursorKind::ToString(String^ format)
 		case CXCursor_IBActionAttr:							return "IBActionAttr";
 		case CXCursor_IBOutletAttr:							return "IBOutletAttr";
 		case CXCursor_IBOutletCollectionAttr:				return "IBOutletCollectionAttr";
-		case CXCursor_CXXFinalAttr:							return "CXXFinalAttr";
-		case CXCursor_CXXOverrideAttr:						return "CXXOverrideAttr";
+		case CXCursor_CXXFinalAttr:							return "CxxFinalAttr";
+		case CXCursor_CXXOverrideAttr:						return "CxxOverrideAttr";
 		case CXCursor_AnnotateAttr:							return "AnnotateAttr";
 		case CXCursor_AsmLabelAttr:							return "AsmLabelAttr";
 		case CXCursor_PackedAttr:							return "PackedAttr";
@@ -415,8 +418,8 @@ String^ CursorKind::ToString(String^ format)
 		case CXCursor_DLLImport:							return "DLLImport";
 		case CXCursor_PreprocessingDirective:				return "PreprocessingDirective";
 		case CXCursor_MacroDefinition:						return "MacroDefinition";
-		//case CXCursor_MacroExpansion:						return "MacroExpansion";
-		case CXCursor_MacroInstantiation:					return "MacroInstantiation";
+		case CXCursor_MacroExpansion:						return "MacroExpansion";
+		//case CXCursor_MacroInstantiation:					return "MacroInstantiation";
 		case CXCursor_InclusionDirective:					return "InclusionDirective";
 		case CXCursor_ModuleImportDecl:						return "ModuleImportDecl";
 		case CXCursor_TypeAliasTemplateDecl:				return "TypeAliasTemplateDecl";
