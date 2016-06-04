@@ -12,7 +12,10 @@
     <summary>Managed code bindings/wrapper classes for libclang v3.8 (x86 and x64)</summary>
     <description>Provides a comprehensive object model that exposes the entire libclang API including static indexing, event driven indexing, code completion, build system, compilation database, and documentation parsing. Requires Microsoft.NET version 4.5 or higher.</description>
     <releaseNotes>Version 1.1 (libclang v3.8.0)
-* Added overload to CursorKind.ToString() that accepts a format string of "E" or "e" to return the underlying enumeration short name rather than the generized name provided by the clang API.  This is useful when strings without embedded spaces or special characters are needed.
+* GitHub Issue #1: Added overload to CursorKind.ToString() that accepts a format string of "S" or "s" to return the short value type name rather than the generized name provided by the clang API.  This is useful when strings without embedded spaces or special characters are required.
+* GitHub Issue #2: Modified Cursor.Extent property to expose a new extent based on the specific file locations rather than relying upon the cursor extent supplied by the clang API.  The internal representation of the extent may differ from what is externally reported which causes unexpected results with operations like Extent.GetTokens().
+* GitHub Issue #3: Modified Extent.GetTokens() so that exclusion of a trailing token as part of the workaround for clang bug 9069 is based on the source extent being a bounding range rather than an inclusive range.  This prevents unexpected trailing punctuation tokens from being returned as part of the token collection.
+* Removed CursorKind.GCCAsmStmt and CursorKind.MacroInstantiation values.  These are duplicates of CursorKind.AsmStmt and CursorKind.MacroExpansion and became problematic during resolution of GitHub Issue #1.
     </releaseNotes>
     <copyright>Copyright (C)2016 Michael G. Brehm</copyright>
     <tags>clang libclang zuki</tags>
