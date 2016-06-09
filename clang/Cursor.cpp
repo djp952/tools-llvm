@@ -416,8 +416,31 @@ bool Cursor::Equals(Object^ rhs)
 
 local::Extent^ Cursor::Extent::get(void)
 {
-	if(Object::ReferenceEquals(m_extent, nullptr)) 
-		m_extent = local::Extent::Create(m_handle->Owner, m_handle->TranslationUnit, clang_getCursorExtent(CursorHandle::Reference(m_handle)));
+	if(Object::ReferenceEquals(m_extent, nullptr)) {
+
+		CXFile						startfile, endfile;			// CXFile instances
+		unsigned int				startoffset, endoffset;		// Location offsets
+		CursorHandle::Reference		handle(m_handle);			// Unwrap the safe handle
+
+		// GITHUB ISSUE #2 (https://github.com/djp952/tools-llvm/issues/2)
+		//
+		// The extent returned by clang_getCursorExtent may have a different internal range than the
+		// one exposed to the end user.  While this may have value to clang it's not intuitive for
+		// operations like tokenizing an extent (far too many tokens may be returned).
+		//
+		// Convert the CXSourceRange returned from clang_getCursorExtent into a new CXSourceRange based
+		// on the specific start and end file locations that are going to be reported to the end user,
+		// this should make all operations that rely on the cursor extent to behave as one would expect
+		
+		CXSourceRange cursorextent = clang_getCursorExtent(CursorHandle::Reference(m_handle));
+		clang_getFileLocation(clang_getRangeStart(cursorextent), &startfile, __nullptr, __nullptr, &startoffset);
+		clang_getFileLocation(clang_getRangeEnd(cursorextent), &endfile, __nullptr, __nullptr, &endoffset);
+
+		CXSourceRange reportextent = clang_getRange(clang_getLocationForOffset(handle.TranslationUnit, startfile, startoffset), 
+			clang_getLocationForOffset(handle.TranslationUnit, endfile, endoffset));
+
+		m_extent = local::Extent::Create(m_handle->Owner, m_handle->TranslationUnit, reportextent);
+	}
 
 	return m_extent;
 }

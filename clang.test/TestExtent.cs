@@ -207,13 +207,12 @@ namespace zuki.tools.llvm.clang.test
 
 				// Verify entity x tokens
 				TokenCollection xtokens = x.Extent.GetTokens();
-				Assert.AreEqual(5, xtokens.Count);
+				Assert.AreEqual(4, xtokens.Count);
 				for (int index = 0; index < xtokens.Count; index++) Assert.AreSame(xtokens[index], xtokens[index]);
 				Assert.AreEqual("int", xtokens[0].Spelling);
 				Assert.AreEqual("x", xtokens[1].Spelling);
 				Assert.AreEqual("=", xtokens[2].Spelling);
 				Assert.AreEqual("10", xtokens[3].Spelling);
-				Assert.AreEqual(";", xtokens[4].Spelling);
 				foreach (Token t in xtokens) Assert.IsNotNull(t);
 				foreach (Object obj in (System.Collections.IEnumerable)xtokens) Assert.IsNotNull(obj);
 
@@ -226,13 +225,12 @@ namespace zuki.tools.llvm.clang.test
 
 				// Verify entity y tokens
 				TokenCollection ytokens = y.Extent.GetTokens();
-				Assert.AreEqual(5, ytokens.Count);
+				Assert.AreEqual(4, ytokens.Count);
 				for (int index = 0; index < ytokens.Count; index++) Assert.AreSame(ytokens[index], ytokens[index]);
 				Assert.AreEqual("int", ytokens[0].Spelling);
 				Assert.AreEqual("y", ytokens[1].Spelling);
 				Assert.AreEqual("=", ytokens[2].Spelling);
 				Assert.AreEqual("11", ytokens[3].Spelling);
-				Assert.AreEqual(";", ytokens[4].Spelling);
 				foreach (Token t in ytokens) Assert.IsNotNull(t);
 				foreach (Object obj in (System.Collections.IEnumerable)ytokens) Assert.IsNotNull(obj);
 
@@ -245,13 +243,12 @@ namespace zuki.tools.llvm.clang.test
 
 				// Verify entity z tokens
 				TokenCollection ztokens = z.Extent.GetTokens();
-				Assert.AreEqual(5, ztokens.Count);
+				Assert.AreEqual(4, ztokens.Count);
 				for (int index = 0; index < ztokens.Count; index++) Assert.AreSame(ztokens[index], ztokens[index]);
 				Assert.AreEqual("int", ztokens[0].Spelling);
 				Assert.AreEqual("z", ztokens[1].Spelling);
 				Assert.AreEqual("=", ztokens[2].Spelling);
 				Assert.AreEqual("12", ztokens[3].Spelling);
-				Assert.AreEqual(";", ztokens[4].Spelling);
 				foreach (Token t in ztokens) Assert.IsNotNull(t);
 				foreach (Object obj in (System.Collections.IEnumerable)ztokens) Assert.IsNotNull(obj);
 			}

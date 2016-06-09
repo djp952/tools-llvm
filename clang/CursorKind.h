@@ -74,6 +74,11 @@ public:
 	// Overrides Object::ToString()
 	virtual String^ ToString(void) override;
 
+	// ToString
+	//
+	// Gets the string representation of the cursor kind
+	String^ ToString(String^ format);
+
 	//-----------------------------------------------------------------------
 	// Properties
 
@@ -269,7 +274,7 @@ public:
 	static initonly CursorKind ContinueStmt							= CursorKind(CXCursorKind::CXCursor_ContinueStmt);
 	static initonly CursorKind BreakStmt							= CursorKind(CXCursorKind::CXCursor_BreakStmt);
 	static initonly CursorKind ReturnStmt							= CursorKind(CXCursorKind::CXCursor_ReturnStmt);
-	static initonly CursorKind GCCAsmStmt							= CursorKind(CXCursorKind::CXCursor_GCCAsmStmt);
+	//static initonly CursorKind GCCAsmStmt							= CursorKind(CXCursorKind::CXCursor_GCCAsmStmt);
 	static initonly CursorKind AsmStmt								= CursorKind(CXCursorKind::CXCursor_AsmStmt);
 	static initonly CursorKind ObjectiveCAtTryStmt					= CursorKind(CXCursorKind::CXCursor_ObjCAtTryStmt);
 	static initonly CursorKind ObjectiveCAtCatchStmt				= CursorKind(CXCursorKind::CXCursor_ObjCAtCatchStmt);
@@ -340,7 +345,7 @@ public:
 	static initonly CursorKind PreprocessingDirective				= CursorKind(CXCursorKind::CXCursor_PreprocessingDirective);
 	static initonly CursorKind MacroDefinition						= CursorKind(CXCursorKind::CXCursor_MacroDefinition);
 	static initonly CursorKind MacroExpansion						= CursorKind(CXCursorKind::CXCursor_MacroExpansion);
-	static initonly CursorKind MacroInstantiation					= CursorKind(CXCursorKind::CXCursor_MacroInstantiation);
+	//static initonly CursorKind MacroInstantiation					= CursorKind(CXCursorKind::CXCursor_MacroInstantiation);
 	static initonly CursorKind InclusionDirective					= CursorKind(CXCursorKind::CXCursor_InclusionDirective);
 	static initonly CursorKind ModuleImportDecl						= CursorKind(CXCursorKind::CXCursor_ModuleImportDecl);
 	static initonly CursorKind TypeAliasTemplateDecl				= CursorKind(CXCursorKind::CXCursor_TypeAliasTemplateDecl);

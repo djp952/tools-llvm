@@ -528,6 +528,43 @@ namespace zuki.tools.llvm.clang.test
 		}
 
 		[TestMethod(), TestCategory("Cursors")]
+		public void Cursor_Extent_GitHubIssue2()
+		{
+			// GITHUB ISSUE #2 (https://github.com/djp952/tools-llvm/issues/2)
+			//
+			// The extent returned by the clang API may internally include a much broader range than what is
+			// being reported, particularly (exclusively?) with macros.  This causes operations like Extent.GetTokens() 
+			// to appear to misbehave.  The resolution for this was to create and return a new extent based on the
+			// specific file locations reported by clang_getCursorExtent rather than the returned range itself
+			//
+			string code = "#define MYMACRO 123\r\n\r\ntypedef struct __mystruct { int myarray[MYMACRO]; }";
+			using (TranslationUnit unit = s_index.CreateTranslationUnitFromString(code, Language.C))
+			{
+				// Find the MacroExpansion cursor for MYMACRO, should be the only one in the code
+				var cursors = unit.Cursor.FindChildren((c, p) => c.Kind == CursorKind.MacroExpansion, true);
+				Assert.IsNotNull(cursors);
+				Assert.AreEqual(1, cursors.Count);
+
+				// Grab the cursor from the collection
+				Cursor cursor = cursors[0].Item1;
+				Assert.IsNotNull(cursor);
+				Assert.IsFalse(Cursor.IsNull(cursor));
+
+				// Make sure we didn't dork up the .Extent property itself
+				Assert.IsNotNull(cursor.Extent);
+				Assert.AreSame(cursor.Extent, cursor.Extent);
+
+				// Prior to resolution of the issue, tokenizing this cursor would return TODO tokens
+				// (TODO LIST)
+				// after resolution, the only token returned should be "MYMACRO"
+				var tokens = cursor.Extent.GetTokens();
+				Assert.IsNotNull(tokens);
+				Assert.AreEqual(1, tokens.Count);
+				Assert.AreEqual("MYMACRO", tokens[0].Spelling);
+			}
+		}
+
+		[TestMethod(), TestCategory("Cursors")]
 		public void Cursor_FieldBitWidth()
 		{
 			string code = "typedef struct s { unsigned char bits1 : 2; unsigned char bits2 : 6; };";
@@ -1124,6 +1161,13 @@ namespace zuki.tools.llvm.clang.test
 				Assert.IsFalse(cursor.Kind.IsTranslationUnit);
 				Assert.IsFalse(cursor.Kind.IsUnexposed);
 			}
+
+			// GITHUB ISSUE #1 (https://github.com/djp952/tools-llvm/issues/1)
+			//
+			// Test the new "S" format specifier for short cursor kind names
+			Assert.AreEqual("macro definition", CursorKind.MacroDefinition.ToString());
+			Assert.AreEqual("MacroDefinition", CursorKind.MacroDefinition.ToString("S"));
+			Assert.AreEqual("MacroDefinition", CursorKind.MacroDefinition.ToString("s"));
 		}
 
 		[TestMethod(), TestCategory("Cursors")]

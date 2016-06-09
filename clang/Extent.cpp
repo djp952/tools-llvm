@@ -102,17 +102,31 @@ bool Extent::Contains(const CXSourceLocation& location)
 	if(clang_equalLocations(end, null) != 0) return false;
 	if(clang_equalLocations(location, null) != 0) return false;
 
+	// GITHUB ISSUE #3 (https://github.com/djp952/tools-llvm/issues/3)
+	//
+	// Extents are bounding ranges:
+	//
+	// ... 22|23|24|25|26|27|28|29 ...
+	//     M  Y  M  A  C  R  O  ]
+	//
+	// The extent for "MYMACRO" is 22-29, so the original logic below would
+	// have still included the right bracket.  Changing the comparison from
+	// >= to just > below should take care of that.  Also use the FILE location 
+	// rather than the SPELLING location here since this operation is only
+	// used for tokenization which is specifically based on file locations
+	// after resolution of https://github.com/djp952/tools-llvm/issues/2.
+
 	// Get the file instances and offsets for all the locations
-	clang_getSpellingLocation(start, &files[0], __nullptr, __nullptr, &offsets[0]);
-	clang_getSpellingLocation(end, &files[1], __nullptr, __nullptr, &offsets[1]);
-	clang_getSpellingLocation(location, &files[2], __nullptr, __nullptr, &offsets[2]);
+	clang_getFileLocation(start, &files[0], __nullptr, __nullptr, &offsets[0]);
+	clang_getFileLocation(end, &files[1], __nullptr, __nullptr, &offsets[1]);
+	clang_getFileLocation(location, &files[2], __nullptr, __nullptr, &offsets[2]);
 
 	// If any of the locations are in different files, return false
 	if(clang_File_isEqual(files[0], files[1]) == 0) return false;
 	if(clang_File_isEqual(files[1], files[2]) == 0) return false;
 
 	// Same files, use the offsets within those files to determine result
-	return ((offsets[0] <= offsets[2]) && (offsets[1] >= offsets[2]));
+	return ((offsets[0] <= offsets[2]) && (offsets[1] > offsets[2]));
 }
 	
 //---------------------------------------------------------------------------
