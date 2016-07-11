@@ -32,7 +32,7 @@ using namespace System::Text;
 
 #pragma warning(push, 4)			// Enable maximum compiler warnings
 
-BEGIN_ROOT_NAMESPACE(zuki::tools::llvm::clang)
+namespace zuki::tools::llvm::clang {
 
 //---------------------------------------------------------------------------
 // StringUtil::FreeCharPointer
@@ -279,6 +279,6 @@ String^ StringUtil::ToString(const CXString& string)
 
 //---------------------------------------------------------------------------
 
-END_ROOT_NAMESPACE(zuki::tools::llvm::clang)
+} // zuki::tools::llvm::clang
 
 #pragma warning(pop)

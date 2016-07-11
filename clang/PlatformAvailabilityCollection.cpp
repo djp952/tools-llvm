@@ -29,7 +29,7 @@
 
 #pragma warning(push, 4)				// Enable maximum compiler warnings
 
-BEGIN_ROOT_NAMESPACE(zuki::tools::llvm::clang)
+namespace zuki::tools::llvm::clang {
 
 //---------------------------------------------------------------------------
 // PlatformAvailabilityCollection Constructor (private)
@@ -202,6 +202,6 @@ System::Collections::IEnumerator^ PlatformAvailabilityCollection::IEnumerable_Ge
 
 //---------------------------------------------------------------------------
 
-END_ROOT_NAMESPACE(zuki::tools::llvm::clang)
+} // zuki::tools::llvm::clang
 
 #pragma warning(pop)

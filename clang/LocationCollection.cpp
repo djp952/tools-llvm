@@ -28,7 +28,7 @@
 
 #pragma warning(push, 4)				// Enable maximum compiler warnings
 
-BEGIN_ROOT_NAMESPACE(zuki::tools::llvm::clang)
+namespace zuki::tools::llvm::clang {
 
 //---------------------------------------------------------------------------
 // LocationCollection Constructor
@@ -117,6 +117,6 @@ System::Collections::IEnumerator^ LocationCollection::IEnumerable_GetEnumerator(
 
 //---------------------------------------------------------------------------
 
-END_ROOT_NAMESPACE(zuki::tools::llvm::clang)
+} // zuki::tools::llvm::clang
 
 #pragma warning(pop)

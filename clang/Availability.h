@@ -28,7 +28,7 @@
 
 using namespace System;
 
-BEGIN_ROOT_NAMESPACE(zuki::tools::llvm::clang)
+namespace zuki::tools::llvm::clang {
 
 //---------------------------------------------------------------------------
 // Enum Availability
@@ -46,7 +46,7 @@ public enum class Availability
 
 //---------------------------------------------------------------------------
 
-END_ROOT_NAMESPACE(zuki::tools::llvm::clang)
+} // zuki::tools::llvm::clang
 
 #pragma warning(pop)
 

@@ -33,7 +33,7 @@ using namespace System::IO;
 using namespace System::Reflection;
 using namespace System::Xml::Schema;
 
-BEGIN_ROOT_NAMESPACE(zuki::tools::llvm::clang)
+namespace zuki::tools::llvm::clang {
 
 // FORWARD DECLARATIONS
 //
@@ -82,7 +82,7 @@ private:
 
 //---------------------------------------------------------------------------
 
-END_ROOT_NAMESPACE(zuki::tools::llvm::clang)
+} // zuki::tools::llvm::clang
 
 #pragma warning(pop)
 

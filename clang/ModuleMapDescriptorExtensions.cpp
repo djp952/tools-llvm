@@ -27,8 +27,7 @@
 
 #pragma warning(push, 4)				// Enable maximum compiler warnings
 
-BEGIN_ROOT_NAMESPACE(zuki::tools::llvm::clang)
-BEGIN_NAMESPACE(extensions)
+namespace zuki::tools::llvm::clang::extensions {
 
 //---------------------------------------------------------------------------
 // ModuleMapDescriptorExtensions::Save (static)
@@ -96,7 +95,6 @@ void ModuleMapDescriptorExtensions::WriteTo(ModuleMapDescriptor^ descriptor, Str
 
 //---------------------------------------------------------------------------
 
-END_NAMESPACE(extensions)
-END_ROOT_NAMESPACE(zuki::tools::llvm::clang)
+} // zuki::tools::llvm::clang::extensions
 
 #pragma warning(pop)

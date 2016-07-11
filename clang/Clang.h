@@ -31,7 +31,7 @@ using namespace System::Collections::Generic;
 using namespace System::IO;
 using namespace System::Runtime::Serialization::Json;
 
-BEGIN_ROOT_NAMESPACE(zuki::tools::llvm::clang)
+namespace zuki::tools::llvm::clang {
 
 // FORWARD DECLARATIONS
 //
@@ -144,7 +144,7 @@ private:
 
 //---------------------------------------------------------------------------
 
-END_ROOT_NAMESPACE(zuki::tools::llvm::clang)
+} // zuki::tools::llvm::clang
 
 #pragma warning(pop)
 

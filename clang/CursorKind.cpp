@@ -27,7 +27,7 @@
 
 #pragma warning(push, 4)				// Enable maximum compiler warnings
 
-BEGIN_ROOT_NAMESPACE(zuki::tools::llvm::clang)
+namespace zuki::tools::llvm::clang {
 
 //---------------------------------------------------------------------------
 // CursorKind Constructor (internal)
@@ -431,6 +431,6 @@ String^ CursorKind::ToString(String^ format)
 
 //---------------------------------------------------------------------------
 
-END_ROOT_NAMESPACE(zuki::tools::llvm::clang)
+} // zuki::tools::llvm::clang
 
 #pragma warning(pop)

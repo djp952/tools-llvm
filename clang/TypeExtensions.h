@@ -31,15 +31,13 @@ using namespace System::Collections::Generic;
 using namespace System::Collections::ObjectModel;
 using namespace System::Runtime::CompilerServices;
 
-BEGIN_ROOT_NAMESPACE(zuki::tools::llvm::clang)
-
 // FORWARD DECLARATIONS
 //
-ref class	Cursor;
-value class	EnumerateFieldsResult;
-ref class	Type;
+namespace zuki::tools::llvm::clang { ref class Cursor; }
+namespace zuki::tools::llvm::clang { value class EnumerateFieldsResult; }
+namespace zuki::tools::llvm::clang { ref class Type; }
 
-BEGIN_NAMESPACE(extensions)
+namespace zuki::tools::llvm::clang::extensions {
 
 //---------------------------------------------------------------------------
 // Class TypeExtensions
@@ -102,8 +100,7 @@ private:
 
 //---------------------------------------------------------------------------
 
-END_NAMESPACE(extensions)
-END_ROOT_NAMESPACE(zuki::tools::llvm::clang)
+} // zuki::tools::llvm::clang::extensions
 
 #pragma warning(pop)
 

@@ -32,13 +32,11 @@ using namespace System::IO;
 using namespace System::Runtime::CompilerServices;
 using namespace System::Text;
 
-BEGIN_ROOT_NAMESPACE(zuki::tools::llvm::clang)
-
 // FORWARD DECLARATIONS
 //
-ref class ModuleMapDescriptor;
+namespace zuki::tools::llvm::clang { ref class ModuleMapDescriptor; }
 
-BEGIN_NAMESPACE(extensions)
+namespace zuki::tools::llvm::clang::extensions {
 
 //---------------------------------------------------------------------------
 // Class ModuleMapDescriptorExtensions
@@ -68,8 +66,7 @@ public:
 
 //---------------------------------------------------------------------------
 
-END_NAMESPACE(extensions)
-END_ROOT_NAMESPACE(zuki::tools::llvm::clang)
+} // zuki::tools::llvm::clang::extensions
 
 #pragma warning(pop)
 

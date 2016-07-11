@@ -28,7 +28,7 @@
 
 using namespace System;
 
-BEGIN_ROOT_NAMESPACE(zuki::tools::llvm::clang)
+namespace zuki::tools::llvm::clang {
 
 //---------------------------------------------------------------------------
 // Enum CompletionChunkKind
@@ -63,7 +63,7 @@ public enum class CompletionChunkKind
 
 //---------------------------------------------------------------------------
 
-END_ROOT_NAMESPACE(zuki::tools::llvm::clang)
+} // zuki::tools::llvm::clang
 
 #pragma warning(pop)
 

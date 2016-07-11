@@ -28,7 +28,7 @@
 
 using namespace System;
 
-BEGIN_ROOT_NAMESPACE(zuki::tools::llvm::clang)
+namespace zuki::tools::llvm::clang {
 
 //---------------------------------------------------------------------------
 // Enum IndexEntityReferenceKind
@@ -44,7 +44,7 @@ public enum class IndexEntityReferenceKind
 
 //---------------------------------------------------------------------------
 
-END_ROOT_NAMESPACE(zuki::tools::llvm::clang)
+} // zuki::tools::llvm::clang
 
 #pragma warning(pop)
 

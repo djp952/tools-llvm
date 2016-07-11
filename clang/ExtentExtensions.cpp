@@ -28,8 +28,7 @@
 
 #pragma warning(push, 4)				// Enable maximum compiler warnings
 
-BEGIN_ROOT_NAMESPACE(zuki::tools::llvm::clang)
-BEGIN_NAMESPACE(extensions)
+namespace zuki::tools::llvm::clang::extensions {
 
 //---------------------------------------------------------------------------
 // ExtentExtensions::GetCharacterLength (static)
@@ -54,7 +53,6 @@ int ExtentExtensions::GetCharacterLength(Extent^ extent)
 
 //---------------------------------------------------------------------------
 
-END_NAMESPACE(extensions)
-END_ROOT_NAMESPACE(zuki::tools::llvm::clang)
+} // zuki::tools::llvm::clang::extensions
 
 #pragma warning(pop)

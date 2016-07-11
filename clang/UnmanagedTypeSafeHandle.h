@@ -31,7 +31,7 @@ using namespace System::Diagnostics;
 using namespace System::Runtime::ConstrainedExecution;
 using namespace System::Runtime::InteropServices;
 
-BEGIN_ROOT_NAMESPACE(zuki::tools::llvm::clang)
+namespace zuki::tools::llvm::clang {
 
 //---------------------------------------------------------------------------
 // Class UnmanagedTypeSafeHandle (internal)
@@ -163,7 +163,7 @@ private:
 
 //---------------------------------------------------------------------------
 
-END_ROOT_NAMESPACE(zuki::tools::llvm::clang)
+} // zuki::tools::llvm::clang
 
 #pragma warning(pop)
 

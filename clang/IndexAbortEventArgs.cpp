@@ -25,7 +25,7 @@
 
 #pragma warning(push, 4)				// Enable maximum compiler warnings
 
-BEGIN_ROOT_NAMESPACE(zuki::tools::llvm::clang)
+namespace zuki::tools::llvm::clang {
 
 //---------------------------------------------------------------------------
 // IndexAbortEventArgs Constructor (internal)
@@ -40,6 +40,6 @@ IndexAbortEventArgs::IndexAbortEventArgs(Object^ state) : Abort(false), IndexEve
 
 //---------------------------------------------------------------------------
 
-END_ROOT_NAMESPACE(zuki::tools::llvm::clang)
+} // zuki::tools::llvm::clang
 
 #pragma warning(pop)

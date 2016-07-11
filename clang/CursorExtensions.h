@@ -31,18 +31,16 @@ using namespace System::Collections::Generic;
 using namespace System::Collections::ObjectModel;
 using namespace System::Runtime::CompilerServices;
 
-BEGIN_ROOT_NAMESPACE(zuki::tools::llvm::clang)
-
 // FORWARD DECLARATIONS
 //
-ref class	Cursor;
-value class	EnumerateChildrenResult;
-value class EnumerateReferencesResult;
-ref class	Extent;
-ref class	File;
-ref class	TokenCollection;
+namespace zuki::tools::llvm::clang { ref class Cursor; }
+namespace zuki::tools::llvm::clang { value class EnumerateChildrenResult; }
+namespace zuki::tools::llvm::clang { value class EnumerateReferencesResult; }
+namespace zuki::tools::llvm::clang { ref class Extent; }
+namespace zuki::tools::llvm::clang { ref class File; }
+namespace zuki::tools::llvm::clang { ref class TokenCollection; }
 
-BEGIN_NAMESPACE(extensions)
+namespace zuki::tools::llvm::clang::extensions {
 
 //---------------------------------------------------------------------------
 // Class CursorExtensions
@@ -180,8 +178,7 @@ private:
 
 //---------------------------------------------------------------------------
 
-END_NAMESPACE(extensions)
-END_ROOT_NAMESPACE(zuki::tools::llvm::clang)
+} // zuki::tools::llvm::clang::extensions
 
 #pragma warning(pop)
 

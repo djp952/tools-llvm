@@ -28,7 +28,7 @@
 
 #pragma warning(push, 4)				// Enable maximum compiler warnings
 
-BEGIN_ROOT_NAMESPACE(zuki::tools::llvm::clang)
+namespace zuki::tools::llvm::clang {
 
 //---------------------------------------------------------------------------
 // IndexBaseClassCollection Constructor (private)
@@ -122,6 +122,6 @@ System::Collections::IEnumerator^ IndexBaseClassCollection::IEnumerable_GetEnume
 
 //---------------------------------------------------------------------------
 
-END_ROOT_NAMESPACE(zuki::tools::llvm::clang)
+} // zuki::tools::llvm::clang
 
 #pragma warning(pop)

@@ -32,7 +32,7 @@ using namespace System;
 using namespace System::Runtime::ConstrainedExecution;
 using namespace System::Runtime::InteropServices;
 
-BEGIN_ROOT_NAMESPACE(zuki::tools::llvm::clang)
+namespace zuki::tools::llvm::clang {
 namespace local = zuki::tools::llvm::clang;
 
 //---------------------------------------------------------------------------
@@ -144,7 +144,7 @@ private:
 
 //---------------------------------------------------------------------------
 
-END_ROOT_NAMESPACE(zuki::tools::llvm::clang)
+} // zuki::tools::llvm::clang
 
 #pragma warning(pop)
 

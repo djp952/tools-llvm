@@ -28,7 +28,7 @@
 
 #pragma warning(push, 4)				// Enable maximum compiler warnings
 
-BEGIN_ROOT_NAMESPACE(zuki::tools::llvm::clang)
+namespace zuki::tools::llvm::clang {
 
 //---------------------------------------------------------------------------
 // DiagnosticEmphasisCollection Constructor
@@ -116,6 +116,6 @@ System::Collections::IEnumerator^ DiagnosticEmphasisCollection::IEnumerable_GetE
 
 //---------------------------------------------------------------------------
 
-END_ROOT_NAMESPACE(zuki::tools::llvm::clang)
+} // zuki::tools::llvm::clang
 
 #pragma warning(pop)

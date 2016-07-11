@@ -31,21 +31,19 @@ using namespace System::Collections::Generic;
 using namespace System::Collections::ObjectModel;
 using namespace System::Runtime::CompilerServices;
 
-BEGIN_ROOT_NAMESPACE(zuki::tools::llvm::clang)
-
 // FORWARD DECLARATIONS
 //
-enum class	CompletionOptions;
-ref class	CompletionResultCollection;
-ref class	Extent;
-ref class	File;
-ref class	Location;
-ref class	LocationCollection;
-ref class	TokenCollection;
-ref class	TranslationUnit;
-ref class	UnsavedFile;
+namespace zuki::tools::llvm::clang { enum class CompletionOptions; }
+namespace zuki::tools::llvm::clang { ref class CompletionResultCollection; }
+namespace zuki::tools::llvm::clang { ref class Extent; }
+namespace zuki::tools::llvm::clang { ref class File; }
+namespace zuki::tools::llvm::clang { ref class Location; }
+namespace zuki::tools::llvm::clang { ref class LocationCollection; }
+namespace zuki::tools::llvm::clang { ref class TokenCollection; }
+namespace zuki::tools::llvm::clang { ref class TranslationUnit; }
+namespace zuki::tools::llvm::clang { ref class UnsavedFile; }
 
-BEGIN_NAMESPACE(extensions)
+namespace zuki::tools::llvm::clang::extensions {
 
 //---------------------------------------------------------------------------
 // Class TranslationUnitExtensions
@@ -156,8 +154,7 @@ private:
 
 //---------------------------------------------------------------------------
 
-END_NAMESPACE(extensions)
-END_ROOT_NAMESPACE(zuki::tools::llvm::clang)
+} // zuki::tools::llvm::clang::extensions
 
 #pragma warning(pop)
 

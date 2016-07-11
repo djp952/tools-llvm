@@ -28,7 +28,7 @@
 
 #pragma warning(push, 4)				// Enable maximum compiler warnings
 
-BEGIN_ROOT_NAMESPACE(zuki::tools::llvm::clang)
+namespace zuki::tools::llvm::clang {
 
 //---------------------------------------------------------------------------
 // LoadedDiagnosticCollection Constructor (private)
@@ -103,6 +103,6 @@ LoadedDiagnosticCollection^ LoadedDiagnosticCollection::Create(CXDiagnosticSet&&
 
 //---------------------------------------------------------------------------
 
-END_ROOT_NAMESPACE(zuki::tools::llvm::clang)
+} // zuki::tools::llvm::clang
 
 #pragma warning(pop)

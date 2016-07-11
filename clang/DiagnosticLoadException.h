@@ -31,7 +31,7 @@ using namespace System::Runtime::Serialization;
 using namespace System::Security;
 using namespace System::Security::Permissions;
 
-BEGIN_ROOT_NAMESPACE(zuki::tools::llvm::clang)
+namespace zuki::tools::llvm::clang {
 
 // FORWARD DECLARATIONS
 //
@@ -93,7 +93,7 @@ private:
 
 //---------------------------------------------------------------------------
 
-END_ROOT_NAMESPACE(zuki::tools::llvm::clang)
+} // zuki::tools::llvm::clang
 
 #pragma warning(pop)
 

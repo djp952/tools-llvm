@@ -31,13 +31,11 @@ using namespace System::Collections::Generic;
 using namespace System::Collections::ObjectModel;
 using namespace System::Runtime::CompilerServices;
 
-BEGIN_ROOT_NAMESPACE(zuki::tools::llvm::clang)
-
 // FORWARD DECLARATIONS
 //
-ref class Extent;
+namespace zuki::tools::llvm::clang { ref class Extent; }
 
-BEGIN_NAMESPACE(extensions)
+namespace zuki::tools::llvm::clang::extensions {
 
 //---------------------------------------------------------------------------
 // Class ExtentExtensions
@@ -62,8 +60,7 @@ public:
 
 //---------------------------------------------------------------------------
 
-END_NAMESPACE(extensions)
-END_ROOT_NAMESPACE(zuki::tools::llvm::clang)
+} // zuki::tools::llvm::clang::extensions
 
 #pragma warning(pop)
 
