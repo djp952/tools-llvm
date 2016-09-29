@@ -37,6 +37,7 @@
 #include "EnumerateChildrenResult.h"
 #include "EnumerateReferencesFunc.h"
 #include "EnumerateReferencesResult.h"
+#include "EvaluationResult.h"
 #include "Extent.h"
 #include "ExtentCollection.h"
 #include "File.h"
@@ -410,6 +411,21 @@ bool Cursor::Equals(Object^ rhs)
 }
 
 //---------------------------------------------------------------------------
+// Cursor::Evaluate
+//
+// Enumerate descendant cursors of this cursor
+//
+// Arguments:
+//
+//	NONE
+
+EvaluationResult^ Cursor::Evaluate(void)
+{
+	// This is a method not a property, so don't cache the result object
+	return EvaluationResult::Create(clang_Cursor_Evaluate(CursorHandle::Reference(m_handle)));
+}
+	
+//---------------------------------------------------------------------------
 // Cursor::Extent::get
 //
 // Gets the source range occupied by the entity pointed at by the cursor
@@ -530,6 +546,16 @@ ExtentCollection^ Cursor::GetSpellingNameExtents(void)
 }
 
 //---------------------------------------------------------------------------
+// Cursor::HasAttributes::Get
+//
+// Gets a flag indicating if the given cursor has attributes
+
+bool Cursor::HasAttributes::get(void)
+{
+	return (clang_Cursor_hasAttrs(CursorHandle::Reference(m_handle)) != 0);
+}
+
+//---------------------------------------------------------------------------
 // Cursor::IBOutletCollectionType::get
 //
 // For cursors representing an iboutletcollection attribute, the collection element type
@@ -614,6 +640,56 @@ bool Cursor::IsCxxConstMethod::get(void)
 }
 
 //---------------------------------------------------------------------------
+// Cursor::IsCxxConvertingConstructor::get
+//
+// Gets a flag indicating if a C++ constructor is a converting constructor
+
+bool Cursor::IsCxxConvertingConstructor::get(void)
+{
+	return (clang_CXXConstructor_isConvertingConstructor(CursorHandle::Reference(m_handle)) != 0);
+}
+
+//---------------------------------------------------------------------------
+// Cursor::IsCxxCopyConstructor::get
+//
+// Gets a flag indicating if a C++ constructor is a copy constructor
+
+bool Cursor::IsCxxCopyConstructor::get(void)
+{
+	return (clang_CXXConstructor_isCopyConstructor(CursorHandle::Reference(m_handle)) != 0);
+}
+
+//---------------------------------------------------------------------------
+// Cursor::IsCxxDefaultConstructor::get
+//
+// Gets a flag indicating if a C++ constructor is a default constructor
+
+bool Cursor::IsCxxDefaultConstructor::get(void)
+{
+	return (clang_CXXConstructor_isDefaultConstructor(CursorHandle::Reference(m_handle)) != 0);
+}
+
+//---------------------------------------------------------------------------
+// Cursor::IsCxxMethodDefaulted::get
+//
+// Gets a flag indicating if a C++ method is defaulted
+
+bool Cursor::IsCxxMethodDefaulted::get(void)
+{
+	return (clang_CXXMethod_isDefaulted(CursorHandle::Reference(m_handle)) != 0);
+}
+
+//---------------------------------------------------------------------------
+// Cursor::IsCxxMoveConstructor::get
+//
+// Gets a flag indicating if a C++ constructor is a move constructor
+
+bool Cursor::IsCxxMoveConstructor::get(void)
+{
+	return (clang_CXXConstructor_isMoveConstructor(CursorHandle::Reference(m_handle)) != 0);
+}
+
+//---------------------------------------------------------------------------
 // Cursor::IsCxxMutableField::get
 //
 // Gets a flag indicating if a C++ field is declared 'mutable'
@@ -682,6 +758,36 @@ bool Cursor::IsDefinition::get(void)
 bool Cursor::IsDynamicCall::get(void)
 {
 	return (clang_Cursor_isDynamicCall(CursorHandle::Reference(m_handle)) != 0);
+}
+
+//---------------------------------------------------------------------------
+// Cursor::IsFunctionInlined::Get
+//
+// Gets a flag indicating if the given cursor is an inlined function
+
+bool Cursor::IsFunctionInlined::get(void)
+{
+	return (clang_Cursor_isFunctionInlined(CursorHandle::Reference(m_handle)) != 0);
+}
+
+//---------------------------------------------------------------------------
+// Cursor::IsMacroBuiltin::Get
+//
+// Gets a flag indicating if the given cursor is a built in macro
+
+bool Cursor::IsMacroBuiltin::get(void)
+{
+	return (clang_Cursor_isMacroBuiltin(CursorHandle::Reference(m_handle)) != 0);
+}
+
+//---------------------------------------------------------------------------
+// Cursor::IsMacroFunctionLike::Get
+//
+// Gets a flag indicating if the given cursor is a function like macro
+
+bool Cursor::IsMacroFunctionLike::get(void)
+{
+	return (clang_Cursor_isMacroFunctionLike(CursorHandle::Reference(m_handle)) != 0);
 }
 
 //---------------------------------------------------------------------------

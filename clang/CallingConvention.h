@@ -50,6 +50,9 @@ public enum class CallingConvention
 	Win64			= CXCallingConv::CXCallingConv_X86_64Win64,
 	SysV			= CXCallingConv::CXCallingConv_X86_64SysV,
 	VectorCall		= CXCallingConv::CXCallingConv_X86VectorCall,
+	Swift			= CXCallingConv::CXCallingConv_Swift,
+	PreserveMost	= CXCallingConv::CXCallingConv_PreserveMost,
+	PreserveAll		= CXCallingConv::CXCallingConv_PreserveAll,
 	Invalid			= CXCallingConv::CXCallingConv_Invalid,
 	Unexposed		= CXCallingConv::CXCallingConv_Unexposed,
 };

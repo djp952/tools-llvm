@@ -398,6 +398,32 @@ TypeKind Type::Kind::get(void)
 }
 
 //---------------------------------------------------------------------------
+// Type::NamedType::get
+//
+// Gets the named type for this type
+
+Type^ Type::NamedType::get(void)
+{
+	if(Object::ReferenceEquals(m_named, nullptr))
+		m_named = Type::Create(m_handle->Owner, m_handle->TranslationUnit, clang_Type_getNamedType(TypeHandle::Reference(m_handle)));
+
+	return m_named;
+}
+
+//---------------------------------------------------------------------------
+// Type::ObjectiveCEncoding::get
+//
+// Gets the Objective-C encoding
+
+String^ Type::ObjectiveCEncoding::get(void)
+{
+	if(Object::ReferenceEquals(m_objcencoding, nullptr))
+		m_objcencoding = StringUtil::ToString(clang_Type_getObjCEncoding(TypeHandle::Reference(m_handle)));
+
+	return m_objcencoding;
+}
+
+//---------------------------------------------------------------------------
 // Type::PointeeType::get
 //
 // Gets the pointee type for a pointer type

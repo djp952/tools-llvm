@@ -107,6 +107,7 @@ public:
 	static initonly TypeKind ObjectiveCId				= TypeKind(CXTypeKind::CXType_ObjCId);
 	static initonly TypeKind ObjectiveCClass			= TypeKind(CXTypeKind::CXType_ObjCClass);
 	static initonly TypeKind ObjectiveCSel				= TypeKind(CXTypeKind::CXType_ObjCSel);
+	static initonly TypeKind Float128					= TypeKind(CXTypeKind::CXType_Float128);
 	static initonly TypeKind Complex					= TypeKind(CXTypeKind::CXType_Complex);
 	static initonly TypeKind Pointer					= TypeKind(CXTypeKind::CXType_Pointer);
 	static initonly TypeKind BlockPointer				= TypeKind(CXTypeKind::CXType_BlockPointer);
@@ -126,6 +127,7 @@ public:
 	static initonly TypeKind DependentSizedArray		= TypeKind(CXTypeKind::CXType_DependentSizedArray);
 	static initonly TypeKind MemberPointer				= TypeKind(CXTypeKind::CXType_MemberPointer);
 	static initonly TypeKind Auto						= TypeKind(CXTypeKind::CXType_Auto);
+	static initonly TypeKind Elaborated					= TypeKind(CXTypeKind::CXType_Elaborated);
 
 internal:
 

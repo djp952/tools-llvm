@@ -20,8 +20,8 @@
 // SOFTWARE.
 //---------------------------------------------------------------------------
 
-#ifndef __OBJECTIVECPROPERTYATTRIBUTE_H_
-#define __OBJECTIVECPROPERTYATTRIBUTE_H_
+#ifndef __EVALUATIONRESULTKIND_H_
+#define __EVALUATIONRESULTKIND_H_
 #pragma once
 
 #pragma warning(push, 4)				// Enable maximum compiler warnings
@@ -31,28 +31,20 @@ using namespace System;
 namespace zuki::tools::llvm::clang {
 
 //---------------------------------------------------------------------------
-// Enum ObjectiveCPropertyAttribute
+// Enum EvaluationResultKind
 //
-// Property attributes ObjCPropertyDecl Cursor
+// Describes the kind of a cursor evaluation result
 //---------------------------------------------------------------------------
 
-[FlagsAttribute]
-public enum class ObjectiveCPropertyAttribute
+public enum class EvaluationResultKind
 {
-	None				= CXObjCPropertyAttrKind::CXObjCPropertyAttr_noattr,
-	ReadOnly			= CXObjCPropertyAttrKind::CXObjCPropertyAttr_readonly,
-	Getter				= CXObjCPropertyAttrKind::CXObjCPropertyAttr_getter,
-	Assign				= CXObjCPropertyAttrKind::CXObjCPropertyAttr_assign,
-	ReadWrite			= CXObjCPropertyAttrKind::CXObjCPropertyAttr_readwrite,
-	Retain				= CXObjCPropertyAttrKind::CXObjCPropertyAttr_retain,
-	Copy				= CXObjCPropertyAttrKind::CXObjCPropertyAttr_copy,
-	NonAtomic			= CXObjCPropertyAttrKind::CXObjCPropertyAttr_nonatomic,
-	Setter				= CXObjCPropertyAttrKind::CXObjCPropertyAttr_setter,
-	Atomic				= CXObjCPropertyAttrKind::CXObjCPropertyAttr_atomic,
-	Weak				= CXObjCPropertyAttrKind::CXObjCPropertyAttr_weak,
-	Strong				= CXObjCPropertyAttrKind::CXObjCPropertyAttr_strong,
-	UnsafeUnretained	= CXObjCPropertyAttrKind::CXObjCPropertyAttr_unsafe_unretained,
-	Class				= CXObjCPropertyAttrKind::CXObjCPropertyAttr_class,
+  Integer					= CXEvalResultKind::CXEval_Int,
+  Float						= CXEvalResultKind::CXEval_Float,
+  ObjectiveCStringLiteral	= CXEvalResultKind::CXEval_ObjCStrLiteral,
+  StringLiteral				= CXEvalResultKind::CXEval_StrLiteral,
+  CoreFoundationString		= CXEvalResultKind::CXEval_CFStr,
+  Other						= CXEvalResultKind::CXEval_Other,
+  Unexposed					= CXEvalResultKind::CXEval_UnExposed,
 };
 
 //---------------------------------------------------------------------------
@@ -61,4 +53,4 @@ public enum class ObjectiveCPropertyAttribute
 
 #pragma warning(pop)
 
-#endif	// __OBJECTIVECPROPERTYATTRIBUTE_H_
+#endif	// __EVALUATIONRESULTKIND_H_
