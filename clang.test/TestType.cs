@@ -584,6 +584,48 @@ namespace zuki.tools.llvm.clang.test
 		}
 
 		[TestMethod(), TestCategory("Types")]
+		public void Type_ObjectiveCEncoding()
+		{
+			string code = "int x; int* px; int** ppx;";
+			using (TranslationUnit unit = s_index.CreateTranslationUnitFromString(code))
+			{
+				Type type = unit.FindCursor("x").Type;
+				Assert.IsNotNull(type);
+				Assert.AreNotEqual(TypeKind.Invalid, type.Kind);
+				Assert.IsNotNull(type.ObjectiveCEncoding);
+				Assert.AreSame(type.ObjectiveCEncoding, type.ObjectiveCEncoding);
+				Assert.AreEqual("i", type.ObjectiveCEncoding);
+
+				type = unit.FindCursor("px").Type;
+				Assert.IsNotNull(type);
+				Assert.AreNotEqual(TypeKind.Invalid, type.Kind);
+				Assert.IsNotNull(type.ObjectiveCEncoding);
+				Assert.AreSame(type.ObjectiveCEncoding, type.ObjectiveCEncoding);
+				Assert.AreEqual("^i", type.ObjectiveCEncoding);
+
+				type = unit.FindCursor("ppx").Type;
+				Assert.IsNotNull(type);
+				Assert.AreNotEqual(TypeKind.Invalid, type.Kind);
+				Assert.IsNotNull(type.ObjectiveCEncoding);
+				Assert.AreSame(type.ObjectiveCEncoding, type.ObjectiveCEncoding);
+				Assert.AreEqual("^^i", type.ObjectiveCEncoding);
+			}
+		}
+
+		[TestMethod(), TestCategory("Types")]
+		public void Type_NamedType()
+		{
+			string code = "namespace n { typedef int* p; } n::p gvar;";
+			using (TranslationUnit unit = s_index.CreateTranslationUnitFromString(code, Language.CPlusPlus))
+			{
+				Type type = unit.FindCursor("gvar").Type.NamedType;
+				Assert.IsNotNull(type);
+				Assert.AreNotEqual(TypeKind.Invalid, type.Kind);
+				Assert.AreEqual("p", type.Spelling);
+			}
+		}
+
+		[TestMethod(), TestCategory("Types")]
 		public void Type_PointeeType()
 		{
 			string code = "int x; int* px; int** ppx;";

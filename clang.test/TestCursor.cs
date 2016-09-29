@@ -506,6 +506,53 @@ namespace zuki.tools.llvm.clang.test
 		}
 
 		[TestMethod(), TestCategory("Cursors")]
+		public void Cursor_Evaluate()
+		{
+			string code = "struct foo { int x = 10; float y = 123.45; }; char rg[] = \"hello\";";
+			using (TranslationUnit unit = s_index.CreateTranslationUnitFromString(code, Language.CPlusPlus))
+			{
+				// x -> Integer (10)
+				Cursor cursor = unit.FindCursor("foo").FindCursor("x");
+				Assert.IsNotNull(cursor);
+				Assert.IsFalse(Cursor.IsNull(cursor));
+				EvaluationResult result = cursor.Evaluate();
+				Assert.IsNotNull(result);
+				Assert.AreEqual(result.Kind, EvaluationResultKind.Integer);
+				Assert.IsNotNull(result.IntegerValue);
+				Assert.IsNull(result.FloatValue);
+				Assert.IsNull(result.StringValue);
+				Assert.IsFalse(String.IsNullOrEmpty(result.ToString()));
+				Assert.AreEqual(10, result.IntegerValue);
+
+				// y -> FloatingPoint (123.45)
+				cursor = unit.FindCursor("foo").FindCursor("y");
+				Assert.IsNotNull(cursor);
+				Assert.IsFalse(Cursor.IsNull(cursor));
+				result = cursor.Evaluate();
+				Assert.IsNotNull(result);
+				Assert.AreEqual(result.Kind, EvaluationResultKind.Float);
+				Assert.IsNull(result.IntegerValue);
+				Assert.IsNotNull(result.FloatValue);
+				Assert.IsNull(result.StringValue);
+				Assert.IsFalse(String.IsNullOrEmpty(result.ToString()));
+				//Assert.AreEqual(123.45, result.FloatValue);	// won't be truly equal ... it does work though
+
+				// rg -> StringLiteral ("hello")
+				cursor = unit.FindCursor("rg");
+				Assert.IsNotNull(cursor);
+				Assert.IsFalse(Cursor.IsNull(cursor));
+				result = cursor.Evaluate();
+				Assert.IsNotNull(result);
+				Assert.AreEqual(result.Kind, EvaluationResultKind.StringLiteral);
+				Assert.IsNull(result.IntegerValue);
+				Assert.IsNull(result.FloatValue);
+				Assert.IsNotNull(result.StringValue);
+				Assert.IsFalse(String.IsNullOrEmpty(result.ToString()));
+				Assert.AreEqual("hello", result.StringValue);
+			}
+		}
+
+		[TestMethod(), TestCategory("Cursors")]
 		public void Cursor_Extent()
 		{
 			string code = "class c { public: ~c() {} protected: c() {} private: int m_x; }; int main(void) { return 0; }";
@@ -715,6 +762,24 @@ namespace zuki.tools.llvm.clang.test
 		}
 
 		[TestMethod(), TestCategory("Cursors")]
+		public void Cursor_HasAttributes()
+		{
+			string code = "int oldfunc(void) __attribute__((deprecated)); int newfunc(void);";
+			using (TranslationUnit unit = s_index.CreateTranslationUnitFromString(code))
+			{
+				Cursor cursor = unit.FindCursor("oldfunc");
+				Assert.IsNotNull(cursor);
+				Assert.IsFalse(Cursor.IsNull(cursor));
+				Assert.IsTrue(cursor.HasAttributes);
+
+				cursor = unit.FindCursor("newfunc");
+				Assert.IsNotNull(cursor);
+				Assert.IsFalse(Cursor.IsNull(cursor));
+				Assert.IsFalse(cursor.HasAttributes);
+			}
+		}
+
+		[TestMethod(), TestCategory("Cursors")]
 		public void Cursor_IBOutletCollectionType()
 		{
 			string code = "@interface iface { __attribute__((iboutletcollection(iface))) id var; }";
@@ -880,6 +945,100 @@ namespace zuki.tools.llvm.clang.test
 		}
 
 		[TestMethod(), TestCategory("Cursors")]
+		public void Cursor_IsCxxConvertingConstructor()
+		{
+			string code = "class c { public: c(); c(int); c(c const&); c(c&&); ~c(); }";
+			using (TranslationUnit unit = s_index.CreateTranslationUnitFromString(code, Language.CPlusPlus))
+			{
+				// Get all of the "c" cursors
+				var cursors = unit.FindCursor("c").FindChildren((c, p) => c.Spelling == "c");
+				Assert.IsNotNull(cursors);
+				Assert.AreEqual(4, cursors.Count);
+
+				// all but the default constructor are "converting" constructors
+				Assert.IsFalse(cursors[0].Item1.IsCxxConvertingConstructor);
+				Assert.IsTrue(cursors[1].Item1.IsCxxConvertingConstructor);
+				Assert.IsTrue(cursors[2].Item1.IsCxxConvertingConstructor);
+				Assert.IsTrue(cursors[3].Item1.IsCxxConvertingConstructor);
+			}
+		}
+
+		[TestMethod(), TestCategory("Cursors")]
+		public void Cursor_IsCxxCopyConstructor()
+		{
+			string code = "class c { public: c(); c(int); c(c const&); c(c&&); ~c(); }";
+			using (TranslationUnit unit = s_index.CreateTranslationUnitFromString(code, Language.CPlusPlus))
+			{
+				// Get all of the "c" cursors
+				var cursors = unit.FindCursor("c").FindChildren((c, p) => c.Spelling == "c");
+				Assert.IsNotNull(cursors);
+				Assert.AreEqual(4, cursors.Count);
+
+				// cursors[2] "c(c const&)" is the copy constructor
+				Assert.IsFalse(cursors[0].Item1.IsCxxCopyConstructor);
+				Assert.IsFalse(cursors[1].Item1.IsCxxCopyConstructor);
+				Assert.IsTrue(cursors[2].Item1.IsCxxCopyConstructor);
+				Assert.IsFalse(cursors[3].Item1.IsCxxCopyConstructor);
+			}
+		}
+
+		[TestMethod(), TestCategory("Cursors")]
+		public void Cursor_IsCxxDefaultConstructor()
+		{
+			string code = "class c { public: c(); c(int); c(c const&); c(c&&); ~c(); }";
+			using (TranslationUnit unit = s_index.CreateTranslationUnitFromString(code, Language.CPlusPlus))
+			{
+				// Get all of the "c" cursors
+				var cursors = unit.FindCursor("c").FindChildren((c, p) => c.Spelling == "c");
+				Assert.IsNotNull(cursors);
+				Assert.AreEqual(4, cursors.Count);
+
+				// cursors[0] "c()" is the default constructor
+				Assert.IsTrue(cursors[0].Item1.IsCxxDefaultConstructor);
+				Assert.IsFalse(cursors[1].Item1.IsCxxDefaultConstructor);
+				Assert.IsFalse(cursors[2].Item1.IsCxxDefaultConstructor);
+				Assert.IsFalse(cursors[3].Item1.IsCxxDefaultConstructor);
+			}
+		}
+
+		[TestMethod(), TestCategory("Cursors")]
+		public void Cursor_IsCxxMethodDefaulted()
+		{
+			string code = "class c { public: c()=default; ~c(); }";
+			using (TranslationUnit unit = s_index.CreateTranslationUnitFromString(code, Language.CPlusPlus))
+			{
+				Cursor cursor = unit.FindCursor("c").FindCursor("c");
+				Assert.IsNotNull(cursor);
+				Assert.IsFalse(Cursor.IsNull(cursor));
+				Assert.IsTrue(cursor.IsCxxMethodDefaulted);
+
+				cursor = unit.FindCursor("c").FindCursor("~c");
+				Assert.IsNotNull(cursor);
+				Assert.IsFalse(Cursor.IsNull(cursor));
+				Assert.IsFalse(cursor.IsCxxMethodDefaulted);
+			}
+		}
+
+		[TestMethod(), TestCategory("Cursors")]
+		public void Cursor_IsCxxMoveConstructor()
+		{
+			string code = "class c { public: c(); c(int); c(c const&); c(c&&); ~c(); }";
+			using (TranslationUnit unit = s_index.CreateTranslationUnitFromString(code, Language.CPlusPlus))
+			{
+				// Get all of the "c" cursors
+				var cursors = unit.FindCursor("c").FindChildren((c, p) => c.Spelling == "c");
+				Assert.IsNotNull(cursors);
+				Assert.AreEqual(4, cursors.Count);
+
+				// cursors[3] "c(c&&)" is the move constructor
+				Assert.IsFalse(cursors[0].Item1.IsCxxMoveConstructor);
+				Assert.IsFalse(cursors[1].Item1.IsCxxMoveConstructor);
+				Assert.IsFalse(cursors[2].Item1.IsCxxMoveConstructor);
+				Assert.IsTrue(cursors[3].Item1.IsCxxMoveConstructor);
+			}
+		}
+
+		[TestMethod(), TestCategory("Cursors")]
 		public void Cursor_IsCxxMutableField()
 		{
 			string code = "class c { private: int x; mutable int mx; };";
@@ -1015,6 +1174,52 @@ namespace zuki.tools.llvm.clang.test
 				// search all the cursors in the test code and ensure exactly one is found
 				var cursors = unit.Cursor.FindChildren((c, p) => c.IsDynamicCall == true, true);
 				Assert.AreEqual(1, cursors.Count);
+			}
+		}
+
+		[TestMethod(), TestCategory("Cursors")]
+		public void Cursor_IsFunctionInlined()
+		{
+			string code = "inline int inline_func(int x) { return x + 2; } void not_inline_func(void);";
+			using (TranslationUnit unit = s_index.CreateTranslationUnitFromString(code, Language.CPlusPlus))
+			{
+				Cursor cursor = unit.FindCursor("inline_func");
+				Assert.IsNotNull(cursor);
+				Assert.IsFalse(Cursor.IsNull(cursor));
+				Assert.IsTrue(cursor.IsFunctionInlined);
+
+				cursor = unit.FindCursor("not_inline_func");
+				Assert.IsNotNull(cursor);
+				Assert.IsFalse(Cursor.IsNull(cursor));
+				Assert.IsFalse(cursor.IsFunctionInlined);
+			}
+		}
+
+		[TestMethod(), TestCategory("Cursors")]
+		public void Cursor_IsMacroBuiltin()
+		{
+			string code = "#define FUNC_MAC(x) x\nint p = FUNC_MAC(1); int a = __LINE__;";
+			using (TranslationUnit unit = s_index.CreateTranslationUnitFromString(code, Language.CPlusPlus))
+			{
+				Cursor cursor = unit.FindCursor("__LINE__");
+				Assert.IsNotNull(cursor);
+				Assert.IsFalse(Cursor.IsNull(cursor));
+				Assert.IsTrue(cursor.IsMacroBuiltin);
+				Assert.IsFalse(cursor.IsMacroFunctionLike);
+			}
+		}
+
+		[TestMethod(), TestCategory("Cursors")]
+		public void Cursor_IsMacroFunctionLike()
+		{
+			string code = "#define FUNC_MAC(x) x\nint p = FUNC_MAC(1); int a = __LINE__;";
+			using (TranslationUnit unit = s_index.CreateTranslationUnitFromString(code, Language.CPlusPlus))
+			{
+				Cursor cursor = unit.FindCursor("FUNC_MAC");
+				Assert.IsNotNull(cursor);
+				Assert.IsFalse(Cursor.IsNull(cursor));
+				Assert.IsTrue(cursor.IsMacroFunctionLike);
+				Assert.IsFalse(cursor.IsMacroBuiltin);
 			}
 		}
 
@@ -1581,7 +1786,7 @@ namespace zuki.tools.llvm.clang.test
 		[TestMethod(), TestCategory("Cursors")]
 		public void Cursor_PlatformAvailability()
 		{
-			string code = "__attribute__((availability(macosx,introduced=10.5.1))) @interface WeakClass1 @end";
+			string code = "__attribute__((availability(macos,introduced=10.5.1))) @interface WeakClass1 @end";
 			using (TranslationUnit unit = s_index.CreateTranslationUnitFromString(code, Language.ObjectiveC))
 			{
 				Cursor cursor = unit.FindCursor("WeakClass1");
@@ -1595,7 +1800,7 @@ namespace zuki.tools.llvm.clang.test
 				Assert.AreEqual(new Version(0, 0), cursor.PlatformAvailability[0].Deprecated);
 				Assert.AreEqual("", cursor.PlatformAvailability[0].Message);
 				Assert.AreEqual(new Version(0, 0), cursor.PlatformAvailability[0].Obsoleted);
-				Assert.AreEqual("macosx", cursor.PlatformAvailability[0].Platform);
+				Assert.AreEqual("macos", cursor.PlatformAvailability[0].Platform);
 				Assert.IsFalse(cursor.PlatformAvailability[0].Unavailable);
 
 				// Hit the enumerators for code coverage

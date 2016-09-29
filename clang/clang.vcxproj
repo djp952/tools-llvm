@@ -186,6 +186,8 @@
     <ClInclude Include="BlockCommandComment.h" />
     <ClInclude Include="BlockContentComment.h" />
     <ClInclude Include="CallingConvention.h" />
+    <ClInclude Include="EvaluationResult.h" />
+    <ClInclude Include="EvaluationResultKind.h" />
     <ClInclude Include="IndexAbortEventArgs.h" />
     <ClInclude Include="IndexActionPointerHandle.h" />
     <ClInclude Include="IndexBaseClass.h" />
@@ -377,6 +379,7 @@
     <ClCompile Include="CompletionResultCollection.cpp" />
     <ClCompile Include="CompletionString.cpp" />
     <ClCompile Include="EnumConstant.cpp" />
+    <ClCompile Include="EvaluationResult.cpp" />
     <ClCompile Include="ExtentExtensions.cpp" />
     <ClCompile Include="IndexAbortEventArgs.cpp" />
     <ClCompile Include="IndexAction.cpp" />
@@ -511,7 +514,9 @@
     <ResourceCompile Include="tmp\version.rc" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="clang.nuspec" />
+    <None Include="clang.nuspec">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="clang.targets" />
     <None Include="version.ini" />
   </ItemGroup>

@@ -49,6 +49,7 @@ public enum class TranslationUnitParseOptions
 	SkipFunctionBodies						= CXTranslationUnit_Flags::CXTranslationUnit_SkipFunctionBodies,
 	IncludeBriefCommentsInCodeCompletion	= CXTranslationUnit_Flags::CXTranslationUnit_IncludeBriefCommentsInCodeCompletion,
 	CreatePreambleOnFirstParse				= CXTranslationUnit_Flags::CXTranslationUnit_CreatePreambleOnFirstParse,
+	KeepGoing								= CXTranslationUnit_Flags::CXTranslationUnit_KeepGoing,
 
 	// This is a custom flag put in to handle clang_parseTranslationUnit2FullArgv() without requiring
 	// a complete duplicate set of overloaded TransationUnit creation methods, the method signature is

@@ -240,6 +240,22 @@ public:
 		TypeKind get(void);
 	}
 
+	// NamedType
+	//
+	// Gets the named type for this type
+	property Type^ NamedType
+	{
+		Type^ get(void);
+	}
+
+	// ObjectiveCEncoding
+	//
+	// Gets the Objective-C encoding
+	property String^ ObjectiveCEncoding
+	{
+		String^ get(void);
+	}
+
 	// PointeeType
 	//
 	// Gets the pointee type for pointer types
@@ -316,6 +332,8 @@ private:
 	Type^					m_resulttype;		// Cached result type
 	TypeCollection^			m_templateargs;		// Cached template arg types
 	TypeFieldOffsets^		m_fieldoffsets;		// Cached field offsets
+	Type^					m_named;			// Cached named type
+	String^					m_objcencoding;		// Cached Obj-C encoding
 };
 
 //---------------------------------------------------------------------------

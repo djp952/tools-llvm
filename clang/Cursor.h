@@ -45,6 +45,7 @@ enum class	CxxAccessSpecifier;
 value class EnumConstant;
 value class EnumerateChildrenResult;
 value class EnumerateReferencesResult;
+ref class	EvaluationResult;
 ref class	Extent;
 ref class	ExtentCollection;
 ref class	File;
@@ -107,6 +108,11 @@ public:
 	//
 	// Compares this Cursor instance to another Cursor instance
 	bool Equals(Cursor^ rhs);
+
+	// Evaluate
+	//
+	//
+	EvaluationResult^ Evaluate(void);
 
 	// GetHashCode
 	//
@@ -248,6 +254,14 @@ public:
 		Nullable<int> get(void);
 	}
 
+	// HasAttributes
+	//
+	// Gets a flag indicating if this cursor has attributes
+	property bool HasAttributes
+	{
+		bool get(void);
+	}
+
 	// IBOutletCollectionType
 	//
 	// For cursors representing an iboutletcollection attribute, the collection element type
@@ -304,6 +318,46 @@ public:
 		bool get(void);
 	}
 
+	// IsCxxConvertingConstructor
+	//
+	// Gets a flag indicating if a C++ constructor is a converting constructor
+	property bool IsCxxConvertingConstructor
+	{
+		bool get(void);
+	}
+
+	// IsCxxCopyConstructor
+	//
+	// Gets a flag indicating if a C++ constructor is a copy constructor
+	property bool IsCxxCopyConstructor
+	{
+		bool get(void);
+	}
+
+	// IsCxxDefaultConstructor
+	//
+	// Gets a flag indicating if a C++ constructor is a default constructor
+	property bool IsCxxDefaultConstructor
+	{
+		bool get(void);
+	}
+
+	// IsCxxMethodDefaulted
+	//
+	// Gets a flag indicating if a C++ method is defaulted
+	property bool IsCxxMethodDefaulted
+	{
+		bool get(void);
+	}
+
+	// IsCxxMoveConstructor
+	//
+	// Gets a flag indicating if a C++ constructor is a move constructor
+	property bool IsCxxMoveConstructor
+	{
+		bool get(void);
+	}
+
 	// IsCxxMutableField
 	//
 	// Gets a flag indicating if a C++ field is declared 'mutable'
@@ -356,6 +410,30 @@ public:
 	//
 	// Gets a flag indicating if the given cursor is a dynamic call
 	property bool IsDynamicCall
+	{
+		bool get(void);
+	}
+
+	// IsFunctionInlined
+	//
+	// Gets a flag indicating if the given cursor is an inlined function
+	property bool IsFunctionInlined
+	{
+		bool get(void);
+	}
+
+	// IsMacroBuiltin
+	//
+	// Gets a flag indicating if the given cursor is a built in macro
+	property bool IsMacroBuiltin
+	{
+		bool get(void);
+	}
+
+	// IsMacroFunctionLike
+	//
+	// Gets a flag indicating if the given cursor is a function like macro
+	property bool IsMacroFunctionLike
 	{
 		bool get(void);
 	}

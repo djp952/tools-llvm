@@ -651,6 +651,12 @@
     <ClInclude Include="IndexObjectiveCProtocolReferenceCollection.h">
       <Filter>Header Files\indexer</Filter>
     </ClInclude>
+    <ClInclude Include="EvaluationResultKind.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EvaluationResult.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp">
@@ -1072,6 +1078,9 @@
     </ClCompile>
     <ClCompile Include="IndexObjectiveCProtocolReferenceCollection.cpp">
       <Filter>Source Files\indexer</Filter>
+    </ClCompile>
+    <ClCompile Include="EvaluationResult.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

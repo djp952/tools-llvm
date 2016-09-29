@@ -9,14 +9,14 @@
     <licenseUrl>https://opensource.org/licenses/MIT</licenseUrl>
     <projectUrl>https://github.com/djp952/tools-llvm</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <summary>Managed code bindings/wrapper classes for libclang v3.8 (x86 and x64)</summary>
+    <summary>Managed code bindings/wrapper classes for libclang v3.9 (x86 and x64)</summary>
     <description>Provides a comprehensive object model that exposes the entire libclang API including static indexing, event driven indexing, code completion, build system, compilation database, and documentation parsing. Requires Microsoft.NET version 4.5 or higher.</description>
-    <releaseNotes>Version 1.1 (libclang v3.8.1)
-* (v1.1.380) GitHub Issue #1: Added overload to CursorKind.ToString() that accepts a format string of "S" or "s" to return the short value type name rather than the generized name provided by the clang API.  This is useful when strings without embedded spaces or special characters are required.
-* (v1.1.380) GitHub Issue #2: Modified Cursor.Extent property to expose a new extent based on the specific file locations rather than relying upon the cursor extent supplied by the clang API.  The internal representation of the extent may differ from what is externally reported which causes unexpected results with operations like Extent.GetTokens().
-* (v1.1.380) GitHub Issue #3: Modified Extent.GetTokens() so that exclusion of a trailing token as part of the workaround for clang bug 9069 is based on the source extent being a bounding range rather than an inclusive range.  This prevents unexpected trailing punctuation tokens from being returned as part of the token collection.
-* (v1.1.380) Removed CursorKind.GCCAsmStmt and CursorKind.MacroInstantiation values.  These are duplicates of CursorKind.AsmStmt and CursorKind.MacroExpansion and became problematic during resolution of GitHub Issue #1.
-* (v1.1.381) Updated included libclang.dll to revision 3.8.1
+    <releaseNotes>Version 1.2 (libclang v3.9.0)
+* New CallingConvention, CursorKind, ObjectiveCPropertyAttribute, TranslationUnitParseOptions, and TypeKind values (libclang 3.9)
+* New EvaluationResult class / EvaluationResultKind enumeration (libclang 3.9)
+* New Cursor.Evaluate method (libclang 3.9)
+* New Cursor.HasAttributes, Cursor.IsCxxConvertingConstructor, Cursor.IsCxxCopyConstructor, Cursor.IsCxxDefaultConstructor Cursor.IsCxxMethodDefaulted, Cursor.IsCxxMoveConstructor, Cursor.IsFunctionInlined, Cursor.IsMacroBuiltIn, and Cursor.IsMacroFunctionLike properties (libclang 3.9)
+* New Type.NamedType and Type.ObjectiveCEncoding properties (libclang 3.9)
     </releaseNotes>
     <copyright>Copyright (C)2016 Michael G. Brehm</copyright>
     <tags>clang libclang zuki</tags>
