@@ -21,8 +21,8 @@ Targets:
   <PropertyGroup>
     <SolutionDir>.\</SolutionDir>
     <VSTestConsoleExe>&quot;%VS140COMNTOOLS%..\IDE\CommonExtensions\Microsoft\TestWindow\vstest.console.exe&quot;</VSTestConsoleExe>
-    <OpenCoverConsoleExe>&quot;$(SolutionDir)..\external-opencover\tools\OpenCover.Console.exe&quot;</OpenCoverConsoleExe>
-    <ReportGeneratorExe>&quot;$(SolutionDir)..\external-reportgenerator\tools\ReportGenerator.exe&quot;</ReportGeneratorExe>
+    <OpenCoverConsoleExe>&quot;$(SolutionDir)..\external-opencover\OpenCover.Console.exe&quot;</OpenCoverConsoleExe>
+    <ReportGeneratorExe>&quot;$(SolutionDir)..\external-reportgenerator\ReportGenerator.exe&quot;</ReportGeneratorExe>
     <NuGetExe>&quot;$(SolutionDir)..\external-nuget\nuget.exe&quot;</NuGetExe>
   </PropertyGroup>
   
